@@ -61,11 +61,13 @@ window.addEventListener('keydown', (evt) => {
 })
 
 function addMessage(text, sender) {
-  let c = sender == 'bot' ? botMsgs : userMsgs;
-  let msg;
-  if (sender == 'bot') msg = b('div', { class: 'message ' + sender }, logo.cloneNode(true), b('span', { text: text }));
-  else msg = b('div', { "class": 'message ' + sender }, b('span', { text: text }));
+  const messageClass = 'message ' + sender;
+  const messageContent = sender === 'bot'
+    ? b('div', { class: messageClass }, logo.cloneNode(true), b('span', { text }))
+    : b('div', { class: messageClass }, b('span', { text }));
 
-  c.appendChild(msg);
-  c.scrollTop = c.scrollHeight;
+  const row = b('div', { class: 'text_row ' + sender }, messageContent);
+  container.appendChild(row);
+  container.scrollTop = container.scrollHeight;
 }
+

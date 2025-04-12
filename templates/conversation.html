@@ -11,10 +11,18 @@
   </head>
 
   <body class="background">
-    <button class="home" onclick="window.location.href='/templates/home.html'">Go Home</button>
-    <button class="tinder" onclick="window.location.href='/templates/tinder.html'">Tinder</button>
+    <div class="home">
+      <div class="buttons">
+        <button onclick="window.location.href='/templates/home.html'">Go Home</button>
+        <button onclick="window.location.href='/templates/tinder.html'">Tinder</button>
+      </div>
+      <h1 id="title">CinderGPT</h1>
+    </div>
+    <br>
+    <hr width="50%">
     <div class="screen">
       <div class="chat-container" id="chatContainer">
+        
         <div id="bot-messages"></div>
         <div id="user-messages"></div>
       </div>
@@ -23,6 +31,7 @@
           <div class="row-one">
             <input type="text" id="chatInput" placeholder="Start chatting..." />
           </div>
+          <hr>
           <div class="row-two">
             <div class="left">
               <form action="/" enctype="multipart/form-data" method="POST">
@@ -47,17 +56,17 @@
             </div>
           </div>
         </div>
-      </div>
+      
     </div>
     <div style="display: none;">
-      <span id="logo">
+      <span id="logo"></span>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
           <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
           <circle cx="12" cy="12" r="3" />
         </svg>
       </span>
     </div>
-  </body>
+  </div>
   </body>
 
 </html>

@@ -13,15 +13,26 @@
   </head>
 
   <body>
-    <h1 id="title">Welcome</h1>
-    <form action="/" enctype="multipart/form-data" method="POST">
-      <label for="file-upload" id="file-upload-label">
-        Upload Degree Audit
-      </label>
-      <input id="file-upload" type="file" name="file" />
-      <input type="submit" id="submit-file" value="Go" />
-    </form>
-  </body>
+    <div class="container">
+      <div class="content">
+        <h1 id="title">Welcome to Cinder</h1>
+        <h2 id="description">Upload your UMD Degree Audit below or chat with our AI Assistant!</h2>
+        <div class="form">
+          <form action="/" enctype="multipart/form-data" method="POST">
+            <label for="file-upload" id="file-upload-label">
+              Upload Degree Audit
+            </label>
+            <input id="file-upload" type="file" name="file" />
+            <input type="submit" id="submit-file" value="Go" />
+          </form>
+        </div>
+        <hr>
+        <div class="conversation">
+          <button onclick="window.location.href='/templates/conversation.html'">Chat with our AI Assistant</button>
+        </div>
+      </div>
+      </div>
+    </div>
   </body>
 
 </html>

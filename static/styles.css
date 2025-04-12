@@ -24,7 +24,7 @@
 
 body {
     font-family: "Roboto", sans-serif;
-    max-width: 800px;
+    max-width: 1500px;
     margin: auto;
     color: var(--secondary);
     background-color: var(--primary);
@@ -36,7 +36,12 @@ body {
 }
 
 #title {
-    font-size: 40pt;
+    font-size: 64pt;
+    text-align: center;
+}
+
+#description {
+    font-size: 28pt;
     text-align: center;
 }
 
@@ -47,11 +52,14 @@ input[type="file"] {
 #file-upload-label {
     color: var(--quaternary);
     display: inline-block;
-    padding: 0.25rem;
+    padding: 0.8rem;
     outline: none;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 8px;
+    font-size: 20pt;
     border: 1px solid var(--quinary);
+    margin-right:10px;
+    margin-bottom: 10px;
 }
 
 #file-upload-label:hover,
@@ -61,5 +69,51 @@ input[type="file"] {
 }
 
 #submit-file {
-    font-size: 14pt;
+    padding: 14px 28px;         
+    font-size: 20pt;            
+    border: none;               
+    border-radius: 8px;         
+    background-color: var(--highlight);  
+    color: white;               
+    cursor: pointer;
+}
+
+#submit-file:hover{
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+}
+
+.form{
+    display: flex;
+  justify-content: center;  
+  align-items: center;                 
+  flex-direction: column;
+}
+
+.conversation {
+    display: flex;
+    justify-content: center;  
+    align-items: center;                 
+    flex-direction: column;
+    padding: 15px 30px;
+  }
+  
+.conversation button {
+    padding: 14px 28px;         
+    font-size: 20pt;            
+    border: none;               
+    border-radius: 8px;         
+    background-color: var(--highlight);  
+    color: white;               
+    cursor: pointer;
+}
+
+.conversation button:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+  }
+
+.container{
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
 }

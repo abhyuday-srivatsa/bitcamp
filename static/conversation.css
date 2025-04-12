@@ -2,37 +2,51 @@ body {
     max-width: none;
 }
 
-.chat-container {
-    max-width: 700px;
-    margin: 0 auto;
-
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+.screen{
+    margin: auto;
+    max-width: 1500px;
 }
 
-#user-messages,
-#bot-messages {
-    max-width: 50%;
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.text_row {
+    display: flex;
+    width: 100%;
 }
 
 .message {
+    max-width: 60%;
     padding: 0.75rem;
-    margin: 1rem 0;
+    margin: 0.25rem;
     border-radius: 6px;
-    max-width: fit-content;
-}
-
-.user {
+    font-size: 20pt;
+  }
+  
+  .message.user {
     background-color: var(--highlight);
-}
-
-.bot {
-    margin-top: 1rem !important;
+    color: black;
+  }
+  
+  .message.bot {
     background-color: var(--tertiary);
+    color: var(--secondary);
+  }
+
+.text_row.user {
+    justify-content: flex-end;
+}
+  
+.text_row.bot {
+    justify-content: flex-start;
 }
 
 .input-box-container {
+    max-width: 1500px;
     position: absolute;
     top: 85%;
     /* left: 40%; */
@@ -40,12 +54,12 @@ body {
 }
 
 .input-box {
-    border-radius: 6px;
+    border-radius: 10px;
     margin: 0 auto;
-    width: 700px;
+    width: 1500px;
     background: var(--tertiary);
     border: 2px solid lightgray;
-    padding: 0.5rem;
+    padding: 0.5rem;    
 }
 
 input {
@@ -85,6 +99,7 @@ button.send {
 .row-one input[type="text"] {
     width: 100%;
     padding: 0.5rem 0;
+    font-size: 20pt;
 }
 
 .row-one,
@@ -95,6 +110,52 @@ button.send {
     justify-content: space-between;
 }
 
+.right{
+    width: 70px;
+    border-radius: 20px;
+}
+
+.left{
+    width:70px;
+    border-radius: 100px;
+}
+
 #logo {
     color: var(--quaternary);
+}
+
+
+.home {
+    display: flex;
+    justify-content: center; /* Center the h1 */
+    align-items: center;
+    position: relative;
+    top: 2rem;
+  }
+  
+  .buttons {
+    position: absolute;
+    left: 5rem; /* Adds space from the left */
+  }
+  
+  #title {
+    margin: 0;
+  }
+
+
+.home button{
+    padding: 14px 28px;         
+    font-size: 20pt;            
+    border: none;               
+    border-radius: 8px;         
+    background-color: var(--highlight);  
+    color: white;               
+    cursor: pointer;
+}
+
+.left label:hover{
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+}
+.right button:hover{
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
 }
