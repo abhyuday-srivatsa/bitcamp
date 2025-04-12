@@ -2,6 +2,36 @@ body {
     max-width: none;
 }
 
+.chat-container {
+    max-width: 700px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+#user-messages,
+#bot-messages {
+    max-width: 50%;
+}
+
+.message {
+    padding: 0.75rem;
+    margin: 1rem 0;
+    border-radius: 6px;
+    max-width: fit-content;
+}
+
+.user {
+    background-color: var(--highlight);
+}
+
+.bot {
+    margin-top: 1rem !important;
+    background-color: var(--tertiary);
+}
+
 .input-box-container {
     position: absolute;
     top: 85%;
@@ -12,7 +42,7 @@ body {
 .input-box {
     border-radius: 6px;
     margin: 0 auto;
-    width: 50%;
+    width: 700px;
     background: var(--tertiary);
     border: 2px solid lightgray;
     padding: 0.5rem;
@@ -63,4 +93,8 @@ button.send {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+}
+
+#logo {
+    color: var(--quaternary);
 }
