@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
     NUM_CARDS = 20
-    var cardsContainer = document.getElementById('tinder--cards')
     for (let i = 1; i <= NUM_CARDS; i++){
         var newCard = document.createElement('div');
         newCard.classList.add('tinder--card');
@@ -12,10 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
         
         document.querySelector('.tinder--cards').appendChild(newCard);
     }
-
-
-
-
 
     var tinderContainer = document.querySelector('.tinder');
     var allCards = document.querySelectorAll('.tinder--card');
