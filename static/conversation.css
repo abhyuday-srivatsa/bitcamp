@@ -22,11 +22,10 @@ body {
 }
 
 .message {
-    max-width: 60%;
+    max-width: 30%;
     padding: 0.75rem;
     margin: 0.25rem;
     border-radius: 6px;
-    font-size: 20pt;
 }
 
 .message.user {
@@ -100,7 +99,6 @@ button.send {
 .row-one input[type="text"] {
     width: 100%;
     padding: 0.5rem 0;
-    font-size: 20pt;
 }
 
 .row-one,
@@ -204,4 +202,8 @@ button.send {
     top: 160px;
     right: 20px;
     position: absolute;
+}
+
+footer {
+    display: none;
 }

@@ -2,21 +2,96 @@
 {% block body %}
 <div class="container">
   <div class="content">
-    <h1 id="title">Welcome to Cinder</h1>
-    <h2 id="description">Upload your UMD Degree Audit below or chat with our AI Assistant!</h2>
-    <div class="form">
-      <form action="/" enctype="multipart/form-data" method="POST">
-        <label for="file-upload" id="file-upload-label">
-          Upload Degree Audit
-        </label>
-        <input id="file-upload" type="file" name="file" />
-        <input type="submit" id="submit-file" value="Go" />
-      </form>
+    <div class="left">
+      <h1 id="title">Create your perfect schedule with <mark>Cinder</mark></h1>
+      <p id="description">Say goodbye to spreadsheet chaos and indecisive planning. With Cinder, UMD students can build the perfect class schedule using AI – just swipe through smart, optimized options in a sleek, Tinder-style interface. No more second-guessing. Just swipe, select, and schedule. <b></b>Smarter schedules. Less stress. More sleep.</p>
+      </p>
+      <div class="form">
+        <form action="/" enctype="multipart/form-data" method="POST">
+          <!-- <label for="file-upload" id="file-upload-label">
+            Upload Degree Audit
+          </label>
+          <input id="file-upload" type="file" name="file" /> -->
+          <div class="flex coa">
+            <div class="upload-container left" id="drop-area">
+              <div id="first">
+                <div class="upload-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10 9 9 9 8 9" />
+                  </svg>
+                </div>
+                <div class="upload-text">Drop a PDF or click to upload</div>
+              </div>
+              <div class="upload-info">PDF only • Max 10MB</div>
+              <input type="file" id="fileElem" accept="application/pdf">
+              <div class="file-name" id="file-name">No file selected</div>
+            </div>
+            <div class="conversation right">
+              <button type="button" id="chat" onclick="window.location.href='/chat'"><span>Chat with our AI Assistant →</span></button>
+            </div>
+          </div>
+
+          <script>
+            const dropArea = document.getElementById('drop-area');
+            const fileInput = document.getElementById('fileElem');
+            const fileNameDisplay = document.getElementById('file-name');
+
+            // Handle drag events
+            ['dragenter', 'dragover'].forEach(eventName => {
+              dropArea.addEventListener(eventName, e => {
+                e.preventDefault();
+                e.stopPropagation();
+                dropArea.classList.add('dragover');
+              }, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+              dropArea.addEventListener(eventName, e => {
+                e.preventDefault();
+                e.stopPropagation();
+                dropArea.classList.remove('dragover');
+              }, false);
+            });
+
+            // Handle dropped files
+            dropArea.addEventListener('drop', e => {
+              const files = e.dataTransfer.files;
+              handleFiles(files);
+            });
+
+            // Handle click to open file dialog
+            dropArea.addEventListener('click', () => {
+              fileInput.click();
+            });
+
+            // Handle selected files
+            fileInput.addEventListener('change', () => {
+              handleFiles(fileInput.files);
+            });
+
+            function handleFiles(files) {
+              const file = files[0];
+              if (file && file.type === "application/pdf") {
+                fileNameDisplay.textContent = file.name;
+              } else {
+                fileNameDisplay.textContent = "Please upload a valid PDF file.";
+              }
+            }
+          </script>
+        </form>
+      </div>
     </div>
-    <hr>
-    <div class="conversation">
-      <button onclick="window.location.href='/chat'">Chat with our AI Assistant</button>
+    <div class="right">
+      <img src="/static/assets/landing.png" class="header-img" />
+      <figcaption>AI can make mistakes. We are not responsible.</figcaption>
     </div>
+  </div>
+  <div class="subfold">
+    <h2>How does Cinder work?</h2>
   </div>
 </div>
 </div>
