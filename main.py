@@ -44,7 +44,7 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@app.route('/conversation')
+@app.route('/templates/conversation.html')
 def upload():
     return render_template("conversation.html")
 
