@@ -19,7 +19,7 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1000 * 1000
 def too_large(e):
     return make_response(jsonify(message="File is too large"), 413)
 
-@app.route('/templates/home.html', methods=['POST', 'GET'])
+@app.route('/', methods=['POST', 'GET'])
 def home():
     if request.method == "POST":
         print(request.files)
@@ -36,7 +36,7 @@ def home():
             file.save(os.path.join("." + app.config['UPLOAD_FOLDER'], filename + '.pdf'))
             return redirect('/')
     else:
-        return render_template("home.html")
+        return render_template("home.html", title="Cinder: Home")
 
 
 def allowed_file(filename):
@@ -44,17 +44,17 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@app.route('/templates/conversation.html')
+@app.route('/chat')
 def upload():
-    return render_template("conversation.html")
+    return render_template("conversation.html", title="Chat with Cinder")
 
-@app.route('/templates/tinder.html')
+@app.route('/match')
 def tinder():
-    return render_template("tinder.html")
+    return render_template("tinder.html", title="Match")
 
-@app.route('/templates/schedule.html')
+@app.route('/schedule')
 def schedule():
-    return render_template("schedule.html")
+    return render_template("schedule.html", title="Build your schedule")
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)

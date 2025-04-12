@@ -58,7 +58,7 @@ input[type="file"] {
     border-radius: 8px;
     font-size: 20pt;
     border: 1px solid var(--quinary);
-    margin-right:10px;
+    margin-right: 10px;
     margin-bottom: 10px;
 }
 
@@ -69,51 +69,54 @@ input[type="file"] {
 }
 
 #submit-file {
-    padding: 14px 28px;         
-    font-size: 20pt;            
-    border: none;               
-    border-radius: 8px;         
-    background-color: var(--highlight);  
-    color: white;               
+    padding: 14px 28px;
+    font-size: 20pt;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--highlight);
+    color: white;
     cursor: pointer;
 }
 
-#submit-file:hover{
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+#submit-file:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.form{
+.form {
     display: flex;
-  justify-content: center;  
-  align-items: center;                 
-  flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .conversation {
     display: flex;
-    justify-content: center;  
-    align-items: center;                 
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     padding: 15px 30px;
-  }
-  
+}
+
 .conversation button {
-    padding: 14px 28px;         
-    font-size: 20pt;            
-    border: none;               
-    border-radius: 8px;         
-    background-color: var(--highlight);  
-    color: white;               
+    padding: 14px 28px;
+    font-size: 20pt;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--highlight);
+    color: white;
     cursor: pointer;
 }
 
 .conversation button:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
-  }
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
 
-.container{
+.container {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Full viewport height */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    height: 100vh;
+    /* Full viewport height */
 }

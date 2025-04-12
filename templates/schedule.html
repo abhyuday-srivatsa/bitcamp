@@ -1,127 +1,113 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layout.html" %}
+{% block header %}
+<link rel="stylesheet" type="text/css" href="/static/schedule.css" />
+{% endblock %}
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Schedule</title>
-    <link rel="stylesheet" href="/static/schedule.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <script src="/static/schedule.js"></script>
-  </head>
+{% block body %}
 
-  <body>
-    <div class="home">
-      <div class="buttons">
-        <button onclick="window.location.href='/templates/home.html'">Go Home</button>
-        <button onclick="window.location.href='/templates/conversation.html'">Chat with CinderGPT</button>
-        <button onclick="window.location.href='/templates/tinder.html'">Cinder</button>
-      </div>
-      <h1 id="title">Schedule</h1>
+<div class="home">
+    <h1 id="title">Schedule</h1>
+</div>
+<br>
+<br>
+
+<div class="schedule-container">
+    <div class="schedule-row">
+        <div class="schedule-item time-label">Time</div>
+        <div class="schedule-item">M</div>
+        <div class="schedule-item">T</div>
+        <div class="schedule-item">W</div>
+        <div class="schedule-item">Th</div>
+        <div class="schedule-item">F</div>
     </div>
-    <br>
-    <br>    
-
-    <div class = "schedule-container">
-        <div class="schedule-row">
-            <div class="schedule-item time-label">Time</div>
-            <div class="schedule-item">M</div>
-            <div class="schedule-item">T</div>
-            <div class="schedule-item">W</div>
-            <div class="schedule-item">Th</div>
-            <div class="schedule-item">F</div>
-        </div>
-        <div class="schedule-row">
-            <div class="schedule-item time-label">8:00 AM</div>
-            <div class="schedule-cell" data-day="monday" data-time="8"></div>
-            <div class="schedule-cell" data-day="tuesday" data-time="8"></div>
-            <div class="schedule-cell" data-day="wednesday" data-time="8"></div>
-            <div class="schedule-cell" data-day="thursday" data-time="8"></div>
-            <div class="schedule-cell" data-day="friday" data-time="8"></div>
-        </div>
-        <div class="schedule-row">
-            <div class="schedule-item time-label">9:00 AM</div>
-            <div class="schedule-cell" data-day="monday" data-time="9"></div>
-            <div class="schedule-cell" data-day="tuesday" data-time="9"></div>
-            <div class="schedule-cell" data-day="wednesday" data-time="9"></div>
-            <div class="schedule-cell" data-day="thursday" data-time="9"></div>
-            <div class="schedule-cell" data-day="friday" data-time="9"></div>
-        </div>
-        <div class="schedule-row">
-            <div class="schedule-item time-label">10:00 AM</div>
-            <div class="schedule-cell" data-day="monday" data-time="10"></div>
-            <div class="schedule-cell" data-day="tuesday" data-time="10"></div>
-            <div class="schedule-cell" data-day="wednesday" data-time="10"></div>
-            <div class="schedule-cell" data-day="thursday" data-time="10"></div>
-            <div class="schedule-cell" data-day="friday" data-time="10"></div>
-        </div>
-        <div class="schedule-row">
-            <div class="schedule-item time-label">11:00 AM</div>
-            <div class="schedule-cell" data-day="monday" data-time="11"></div>
-            <div class="schedule-cell" data-day="tuesday" data-time="11"></div>
-            <div class="schedule-cell" data-day="wednesday" data-time="11"></div>
-            <div class="schedule-cell" data-day="thursday" data-time="11"></div>
-            <div class="schedule-cell" data-day="friday" data-time="11"></div>
-        </div>
-        <div class="schedule-row">
-            <div class="schedule-item time-label">12:00 PM</div>
-            <div class="schedule-cell" data-day="monday" data-time="12"></div>
-            <div class="schedule-cell" data-day="tuesday" data-time="12"></div>
-            <div class="schedule-cell" data-day="wednesday" data-time="12"></div>
-            <div class="schedule-cell" data-day="thursday" data-time="12"></div>
-            <div class="schedule-cell" data-day="friday" data-time="12"></div>
-        </div>
-        <div class="schedule-row">
-            <div class="schedule-item time-label">1:00 PM</div>
-            <div class="schedule-cell" data-day="monday" data-time="13"></div>
-            <div class="schedule-cell" data-day="tuesday" data-time="13"></div>
-            <div class="schedule-cell" data-day="wednesday" data-time="13"></div>
-            <div class="schedule-cell" data-day="thursday" data-time="13"></div>
-            <div class="schedule-cell" data-day="friday" data-time="13"></div>
-        </div>
-        <div class="schedule-row">
-            <div class="schedule-item time-label">2:00 PM</div>
-            <div class="schedule-cell" data-day="monday" data-time="14"></div>
-            <div class="schedule-cell" data-day="tuesday" data-time="14"></div>
-            <div class="schedule-cell" data-day="wednesday" data-time="14"></div>
-            <div class="schedule-cell" data-day="thursday" data-time="14"></div>
-            <div class="schedule-cell" data-day="friday" data-time="14"></div>
-        </div>
-        <div class="schedule-row">
-            <div class="schedule-item time-label">3:00 PM</div>
-            <div class="schedule-cell" data-day="monday" data-time="15"></div>
-            <div class="schedule-cell" data-day="tuesday" data-time="15"></div>
-            <div class="schedule-cell" data-day="wednesday" data-time="15"></div>
-            <div class="schedule-cell" data-day="thursday" data-time="15"></div>
-            <div class="schedule-cell" data-day="friday" data-time="15"></div>
-        </div>
-        <div class="schedule-row">
-            <div class="schedule-item time-label">4:00 PM</div>
-            <div class="schedule-cell" data-day="monday" data-time="16"></div>
-            <div class="schedule-cell" data-day="tuesday" data-time="16"></div>
-            <div class="schedule-cell" data-day="wednesday" data-time="16"></div>
-            <div class="schedule-cell" data-day="thursday" data-time="16"></div>
-            <div class="schedule-cell" data-day="friday" data-time="16"></div>
-        </div>
-        <div class="schedule-row">
-            <div class="schedule-item time-label">5:00 PM</div>
-            <div class="schedule-cell" data-day="monday" data-time="17"></div>
-            <div class="schedule-cell" data-day="tuesday" data-time="17"></div>
-            <div class="schedule-cell" data-day="wednesday" data-time="17"></div>
-            <div class="schedule-cell" data-day="thursday" data-time="17"></div>
-            <div class="schedule-cell" data-day="friday" data-time="17"></div>
-        </div>
+    <div class="schedule-row">
+        <div class="schedule-item time-label">8:00 AM</div>
+        <div class="schedule-cell" data-day="monday" data-time="8"></div>
+        <div class="schedule-cell" data-day="tuesday" data-time="8"></div>
+        <div class="schedule-cell" data-day="wednesday" data-time="8"></div>
+        <div class="schedule-cell" data-day="thursday" data-time="8"></div>
+        <div class="schedule-cell" data-day="friday" data-time="8"></div>
     </div>
-
-    <div id="edit-modal" class="modal" style="display:none;">
-        <div class="modal-content">
-            <h3>Enter Class Information</h3>
-            <span class="close-button" id="closeModal">&times;</span>
-            <input type="text" id="eventInput" placeholder="Class Name" />
-            <button id="saveEvent">Save</button>
-        </div>
+    <div class="schedule-row">
+        <div class="schedule-item time-label">9:00 AM</div>
+        <div class="schedule-cell" data-day="monday" data-time="9"></div>
+        <div class="schedule-cell" data-day="tuesday" data-time="9"></div>
+        <div class="schedule-cell" data-day="wednesday" data-time="9"></div>
+        <div class="schedule-cell" data-day="thursday" data-time="9"></div>
+        <div class="schedule-cell" data-day="friday" data-time="9"></div>
     </div>
-  </body>
-</html>
+    <div class="schedule-row">
+        <div class="schedule-item time-label">10:00 AM</div>
+        <div class="schedule-cell" data-day="monday" data-time="10"></div>
+        <div class="schedule-cell" data-day="tuesday" data-time="10"></div>
+        <div class="schedule-cell" data-day="wednesday" data-time="10"></div>
+        <div class="schedule-cell" data-day="thursday" data-time="10"></div>
+        <div class="schedule-cell" data-day="friday" data-time="10"></div>
+    </div>
+    <div class="schedule-row">
+        <div class="schedule-item time-label">11:00 AM</div>
+        <div class="schedule-cell" data-day="monday" data-time="11"></div>
+        <div class="schedule-cell" data-day="tuesday" data-time="11"></div>
+        <div class="schedule-cell" data-day="wednesday" data-time="11"></div>
+        <div class="schedule-cell" data-day="thursday" data-time="11"></div>
+        <div class="schedule-cell" data-day="friday" data-time="11"></div>
+    </div>
+    <div class="schedule-row">
+        <div class="schedule-item time-label">12:00 PM</div>
+        <div class="schedule-cell" data-day="monday" data-time="12"></div>
+        <div class="schedule-cell" data-day="tuesday" data-time="12"></div>
+        <div class="schedule-cell" data-day="wednesday" data-time="12"></div>
+        <div class="schedule-cell" data-day="thursday" data-time="12"></div>
+        <div class="schedule-cell" data-day="friday" data-time="12"></div>
+    </div>
+    <div class="schedule-row">
+        <div class="schedule-item time-label">1:00 PM</div>
+        <div class="schedule-cell" data-day="monday" data-time="13"></div>
+        <div class="schedule-cell" data-day="tuesday" data-time="13"></div>
+        <div class="schedule-cell" data-day="wednesday" data-time="13"></div>
+        <div class="schedule-cell" data-day="thursday" data-time="13"></div>
+        <div class="schedule-cell" data-day="friday" data-time="13"></div>
+    </div>
+    <div class="schedule-row">
+        <div class="schedule-item time-label">2:00 PM</div>
+        <div class="schedule-cell" data-day="monday" data-time="14"></div>
+        <div class="schedule-cell" data-day="tuesday" data-time="14"></div>
+        <div class="schedule-cell" data-day="wednesday" data-time="14"></div>
+        <div class="schedule-cell" data-day="thursday" data-time="14"></div>
+        <div class="schedule-cell" data-day="friday" data-time="14"></div>
+    </div>
+    <div class="schedule-row">
+        <div class="schedule-item time-label">3:00 PM</div>
+        <div class="schedule-cell" data-day="monday" data-time="15"></div>
+        <div class="schedule-cell" data-day="tuesday" data-time="15"></div>
+        <div class="schedule-cell" data-day="wednesday" data-time="15"></div>
+        <div class="schedule-cell" data-day="thursday" data-time="15"></div>
+        <div class="schedule-cell" data-day="friday" data-time="15"></div>
+    </div>
+    <div class="schedule-row">
+        <div class="schedule-item time-label">4:00 PM</div>
+        <div class="schedule-cell" data-day="monday" data-time="16"></div>
+        <div class="schedule-cell" data-day="tuesday" data-time="16"></div>
+        <div class="schedule-cell" data-day="wednesday" data-time="16"></div>
+        <div class="schedule-cell" data-day="thursday" data-time="16"></div>
+        <div class="schedule-cell" data-day="friday" data-time="16"></div>
+    </div>
+    <div class="schedule-row">
+        <div class="schedule-item time-label">5:00 PM</div>
+        <div class="schedule-cell" data-day="monday" data-time="17"></div>
+        <div class="schedule-cell" data-day="tuesday" data-time="17"></div>
+        <div class="schedule-cell" data-day="wednesday" data-time="17"></div>
+        <div class="schedule-cell" data-day="thursday" data-time="17"></div>
+        <div class="schedule-cell" data-day="friday" data-time="17"></div>
+    </div>
+</div>
+
+<div id="edit-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <h3>Enter Class Information</h3>
+        <span class="close-button" id="closeModal">&times;</span>
+        <input type="text" id="eventInput" placeholder="Class Name" />
+        <button id="saveEvent">Save</button>
+    </div>
+</div>
+{% endblock %}
