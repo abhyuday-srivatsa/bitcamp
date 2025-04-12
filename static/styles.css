@@ -1,0 +1,50 @@
+:root {
+    --light-one: #f1f1f1;
+    --dark-one: #212121;
+
+    --highlight: #0392cf;
+
+    --primary: var(--light-one);
+    --secondary: var(--dark-one);
+}
+
+/* @media (prefers-color-scheme:dark) {
+    :root {
+        --primary: var(--dark-one);
+        --secondary: var(--light-one);
+    }
+} */
+
+body {
+    font-family: "Roboto", sans-serif;
+    max-width: 800px;
+    margin: auto;
+    color: var(--secondary);
+    background-color: var(--primary);
+    font-size: 12pt;
+}
+
+#title {
+    font-size: 40pt;
+    text-align: center;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#file-upload-label,
+input {
+    background-color: var(--highlight);
+    color: var(--primary);
+    display: inline-block;
+    padding: 0.5rem;
+    outline: none;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
+}
+
+#submit-file {
+    font-size: 14pt;
+}
