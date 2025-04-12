@@ -1,11 +1,18 @@
 :root {
     --light-one: #f1f1f1;
-    --dark-one: #212121;
+    --light-two: #dbdbdb;
+    --light-three: #aaaaaa;
 
-    --highlight: #0392cf;
+    --dark-one: #212121;
+    --dark-two: #797979;
+
+    --highlight: #cf7456;
 
     --primary: var(--light-one);
     --secondary: var(--dark-one);
+    --tertiary: var(--light-two);
+    --quaternary: var(--dark-two);
+    --quinary: var(--light-three);
 }
 
 /* @media (prefers-color-scheme:dark) {
@@ -24,6 +31,10 @@ body {
     font-size: 12pt;
 }
 
+* {
+    transition: 150ms linear;
+}
+
 #title {
     font-size: 40pt;
     text-align: center;
@@ -33,16 +44,20 @@ input[type="file"] {
     display: none;
 }
 
-#file-upload-label,
-input {
-    background-color: var(--highlight);
-    color: var(--primary);
+#file-upload-label {
+    color: var(--quaternary);
     display: inline-block;
-    padding: 0.5rem;
+    padding: 0.25rem;
     outline: none;
     cursor: pointer;
     border-radius: 4px;
-    border: none;
+    border: 1px solid var(--quinary);
+}
+
+#file-upload-label:hover,
+#file-upload-label:focus {
+    border-color: var(--secondary);
+    color: var(--secondary);
 }
 
 #submit-file {
