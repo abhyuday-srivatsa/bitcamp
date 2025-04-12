@@ -142,8 +142,6 @@ def get_course_listings(course_id):
             'sections':complete_sections
             }
 
-
-
 #gets reviews for professor teaching specific course
 def get_professor_ratings(professor_name,review_filter):
     url = 'https://planetterp.com/api/v1/professor?name='+str(professor_name)+'&reviews=true'
