@@ -98,3 +98,38 @@ button.send {
 #logo {
     color: var(--quaternary);
 }
+
+
+
+.weekday {
+    color: var(--quaternary); font-size: 12pt; font-weight: 600; top: 20px; 
+    right: 100px; position: absolute; z-index: 1;
+}
+
+.preference {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    top: 55px;
+    right: 20px;     
+    position: absolute;
+    row-gap: 5px;
+}
+
+.time {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    top: 50px;
+    right: 100px;     
+    position: absolute;
+}
+
+.save {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    top: 160px;
+    right: 20px;     
+    position: absolute;
+}
