@@ -15,6 +15,7 @@
       <div class="buttons">
         <button onclick="window.location.href='/templates/home.html'">Go Home</button>
         <button onclick="window.location.href='/templates/tinder.html'">Tinder</button>
+        <button onclick="window.location.href='/templates/schedule.html'">View Your Schedule</button>
       </div>
       <h1 id="title">CinderGPT</h1>
     </div>
@@ -79,7 +80,7 @@
     <label for="friday">F</label>
     <input type="checkbox" id="friday">
     </div>
-    <div class = "preference">
+    <div class="preference">
       <label for="avoid">Avoid</label>
       <input type="checkbox" id="avoid">
       <label for="include">Include</label>
@@ -92,7 +93,7 @@
       <input type="time" id="end-time">
     </div>
     <div class = "save">
-      <button id="save">Save</button>
+      <button id="save" onclick="save_times()">Save</button>
     </div>
   </body>
 

@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     NUM_CARDS = 20
+    const likedCards = [];
+
     for (let i = 1; i <= NUM_CARDS; i++){
         var newCard = document.createElement('div');
         newCard.classList.add('tinder--card');
@@ -65,6 +67,10 @@ document.addEventListener('DOMContentLoaded', function () {
             if (keep) {
                 event.target.style.transform = '';
             } else {
+                if (event.deltaX > 0) {
+                    // Save right swipe
+                    likedCards.push(event.target.innerHTML);
+                }
                 var endX = Math.max(Math.abs(event.velocityX) * moveOutWidth, moveOutWidth);
                 var toX = event.deltaX > 0 ? endX : -endX;
                 var endY = Math.abs(event.velocityY) * moveOutWidth;
@@ -91,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
             card.classList.add('removed');
 
             if (love) {
+                likedCards.push(card.innerHTML)
                 card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
             } else {
                 card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
@@ -107,4 +114,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     nope.addEventListener('click', nopeListener);
     love.addEventListener('click', loveListener);
+
+    
 });

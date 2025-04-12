@@ -71,3 +71,54 @@ function addMessage(text, sender) {
   container.scrollTop = container.scrollHeight;
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+  logo = document.body.querySelector('#logo')
+  container = document.body.querySelector('#chatContainer');
+  userMsgs = document.body.querySelector('#user-messages');
+  botMsgs = document.body.querySelector('#bot-messages');
+  chatInput = document.body.querySelector('#chatInput');
+  
+  var text = "Thank you for uploading your degree audit. Please enter any time restrictions or any other information you would like me to know before I suggest courses."
+  
+  addMessage(text, 'bot')
+
+  document.getElementById("avoid").addEventListener("change", function() {
+    if (this.checked) {
+      document.getElementById("include").checked = false;
+    }
+  });
+
+  document.getElementById("include").addEventListener("change", function() {
+    if (this.checked) {
+      document.getElementById("avoid").checked = false;
+    }
+  });
+});
+
+function save_times(){
+  // Get weekdays
+  const weekdays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday']
+    .filter(id => document.getElementById(id).checked)
+    .join(', ');
+
+  // Get preferences
+  const preferences = ['avoid', 'include']
+    .filter(id => document.getElementById(id).checked)
+    .join(', ');
+
+  // Get time inputs
+  const startTime = document.getElementById('start-time').value;
+  const endTime = document.getElementById('end-time').value;
+
+  let summary = ""
+  // Create summary string
+  if (preferences == 'avoid'){
+    summary = `DO NOT schedule classes on ${weekdays} from ${startTime} to ${endTime}`
+  } else {
+    summary = `You CAN schedule classes on ${weekdays} from ${startTime} to ${endTime}`
+  }
+
+  textbox = document.getElementById("chatInput")
+  textbox.value = summary
+}
+

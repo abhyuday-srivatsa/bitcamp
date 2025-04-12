@@ -19,7 +19,7 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1000 * 1000
 def too_large(e):
     return make_response(jsonify(message="File is too large"), 413)
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/templates/home.html', methods=['POST', 'GET'])
 def home():
     if request.method == "POST":
         print(request.files)
@@ -48,9 +48,13 @@ def allowed_file(filename):
 def upload():
     return render_template("conversation.html")
 
-@app.route('/tinder')
+@app.route('/templates/tinder.html')
 def tinder():
     return render_template("tinder.html")
+
+@app.route('/templates/schedule.html')
+def schedule():
+    return render_template("schedule.html")
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)

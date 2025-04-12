@@ -12,6 +12,8 @@ body {
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
+    max-height: 1200px;
+    overflow-y: auto
 }
 
 .text_row {
@@ -151,6 +153,10 @@ button.send {
     background-color: var(--highlight);  
     color: white;               
     cursor: pointer;
+}
+
+.home button:hover{
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
 }
 
 .left label:hover{
