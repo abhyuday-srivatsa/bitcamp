@@ -1,14 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BitCamp</title>
-    <link rel="stylesheet" href="/static/styles.css"/>
+    <title>Cinder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
     <script src="/static/script.js"></script>
   </head>
+
   <body>
-    <button class="home" onclick="window.location.href='/templates/conversation.html'">Converse</button>
+    <h1 id="title">Welcome</h1>
+    <form action="/" enctype="multipart/form-data" method="POST">
+      <label for="file-upload" id="file-upload-label">
+        Upload degree audit
+      </label>
+      <input id="file-upload" type="file" name="file" />
+      <input type="submit" id="submit-file" value="Go" />
+    </form>
+    {% with messages = get_flashed_messages()%}
+    {% if messages%}
+    {% for message in messages%}
+    <p>{{message}}</p>
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
   </body>
   </body>
+
 </html>
