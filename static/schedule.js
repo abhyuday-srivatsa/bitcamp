@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeModal = document.getElementById("closeModal");
     const saveEvent = document.getElementById("saveEvent");
     const eventInput = document.getElementById("eventInput");
+    const removeEvent = document.getElementById("removeEvent");
   
     let selectedCell = null;
   
@@ -39,6 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
       
     });
   
+    // Remove event
+
+    removeEvent.addEventListener("click", () => {
+      selectedCell.textContent = ""; // Clear the cell content
+      selectedCell.style.backgroundColor = ""; // Reset background color
+      modal.style.display = "none"; // Hide the modal
+    }
+    );
     // Optional: Close the modal when clicking outside of it
     window.addEventListener("click", (e) => {
       if (e.target === modal) {

@@ -17,6 +17,9 @@ body {
     position: absolute;
     left: 5rem;
     z-index: 10;
+    zoom: 0.52;
+    top: -25px;
+    left: 25px;
 }
 
 .home button{
@@ -111,6 +114,7 @@ body {
     cursor: -webkit-grab;
     cursor: -moz-grab;
     cursor: grab;
+    zoom: 0.8;
 }
 
 .moving.tinder--card {

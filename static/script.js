@@ -1,6 +1,3 @@
-console.log("Script loaded!");
-
-
 function b(
   type,
   attributes,
@@ -64,79 +61,13 @@ window.addEventListener('keydown', (evt) => {
 })
 
 function addMessage(text, sender) {
-  const messageClass = 'message ' + sender;
-  const messageContent = sender === 'bot'
-    ? b('div', { class: messageClass }, logo.cloneNode(true), b('span', { text }))
-    : b('div', { class: messageClass }, b('span', { text }));
+  let c = sender == 'bot' ? botMsgs : userMsgs;
+  let msg;
+  if (sender == 'bot') msg = b('div', { class: 'message ' + sender }, logo.cloneNode(true), b('span', { text: text }));
+  else msg = b('div', { "class": 'message ' + sender }, b('span', { text: text }));
 
-  const row = b('div', { class: 'text_row ' + sender }, messageContent);
-  container.appendChild(row);
-  container.scrollTop = container.scrollHeight;
+  c.appendChild(msg);
+  c.scrollTop = c.scrollHeight;
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  logo = document.body.querySelector('#logo')
-  container = document.body.querySelector('#chatContainer');
-  userMsgs = document.body.querySelector('#user-messages');
-  botMsgs = document.body.querySelector('#bot-messages');
-  chatInput = document.body.querySelector('#chatInput');
-  
-  var text = "Thank you for uploading your degree audit. Please enter any time restrictions or any other information you would like me to know before I suggest courses."
-  setTimeout(() => {
-    addMessage(text, 'bot');
-  }, 500);
-
-  document.getElementById("avoid").addEventListener("change", function() {
-    if (this.checked) {
-      document.getElementById("include").checked = false;
-    }
-  });
-
-  document.getElementById("include").addEventListener("change", function() {
-    if (this.checked) {
-      document.getElementById("avoid").checked = false;
-    }
-  });
-
-});
-
-function confirmUpload(){
-  const fileInput = document.getElementById("file-upload");
-  const fileLabel = document.getElementById("file-upload-label");
-
-  if (fileInput.files.length > 0) {
-    fileLabel.textContent = fileInput.files[0].name;
-  } else {
-    fileLabel.textContent = "Upload Degree Audit";
-  }
-}
-
-
-
-function save_times(){
-  // Get weekdays
-  const weekdays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday']
-    .filter(id => document.getElementById(id).checked)
-    .join(', ');
-
-  // Get preferences
-  const preferences = ['avoid', 'include']
-    .filter(id => document.getElementById(id).checked)
-    .join(', ');
-
-  // Get time inputs
-  const startTime = document.getElementById('start-time').value;
-  const endTime = document.getElementById('end-time').value;
-
-  let summary = ""
-  // Create summary string
-  if (preferences == 'avoid'){
-    summary = `DO NOT schedule classes on ${weekdays} from ${startTime} to ${endTime}`
-  } else {
-    summary = `You CAN schedule classes on ${weekdays} from ${startTime} to ${endTime}`
-  }
-
-  textbox = document.getElementById("chatInput")
-  textbox.value = summary
-}
 

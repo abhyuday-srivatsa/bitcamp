@@ -50,9 +50,9 @@ body {
 .input-box-container {
     max-width: 1500px;
     position: absolute;
-    top: 85%;
-    /* left: 40%; */
-    width: 100%;
+    top: 87%;
+    left: 19%;
+    zoom: 0.6;
 }
 
 .input-box {
@@ -137,7 +137,9 @@ button.send {
   
   .buttons {
     position: absolute;
-    left: 5rem; /* Adds space from the left */
+    left: 20px;
+    top: -20px;
+    zoom: 0.7;
   }
   
   #title {
@@ -153,17 +155,20 @@ button.send {
     background-color: var(--highlight);  
     color: white;               
     cursor: pointer;
+    zoom: 0.8;
 }
 
 .home button:hover{
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+    zoom: 0.8;
 }
 
 .left label:hover{
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
 }
 .right button:hover{
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    zoom: 0.8; 
 }
 .weekday {
     color: var(--quaternary); font-size: 12pt; font-weight: 600; top: 20px; 
