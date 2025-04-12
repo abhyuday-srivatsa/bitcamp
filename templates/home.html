@@ -15,20 +15,6 @@
 
   <body>
     <h1 id="title">Welcome</h1>
-    <form action="/" enctype="multipart/form-data" method="POST">
-      <label for="file-upload" id="file-upload-label">
-        Upload degree audit
-      </label>
-      <input id="file-upload" type="file" name="file" />
-      <input type="submit" id="submit-file" value="Go" />
-    </form>
-    {% with messages = get_flashed_messages()%}
-    {% if messages%}
-    {% for message in messages%}
-    <p>{{message}}</p>
-    {%endfor%}
-    {%endif%}
-    {%endwith%}
   </body>
   </body>
 
