@@ -22,13 +22,13 @@
             <label for="file-upload" id="file-upload-label">
               Upload Degree Audit
             </label>
-            <input id="file-upload" type="file" name="file" />
-            <input type="submit" id="submit-file" value="Go" />
+            <input id="file-upload" type="file" name="file" onchange="confirmUpload()" />
+            <input type="submit" id="submit-file" value="Go"/>
           </form>
         </div>
         <hr>
         <div class="conversation">
-          <button onclick="window.location.href='/templates/conversation.html'">Chat with our AI Assistant</button>
+          <button onclick="window.location.href='/conversation'">Chat with our AI Assistant</button>
         </div>
       </div>
       </div>

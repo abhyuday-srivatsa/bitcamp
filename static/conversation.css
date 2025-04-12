@@ -167,7 +167,7 @@ button.send {
 }
 .weekday {
     color: var(--quaternary); font-size: 12pt; font-weight: 600; top: 20px; 
-    right: 100px; position: absolute; z-index: 1;
+    right: 40px; position: absolute; z-index: 1;
 }
 
 .preference {
