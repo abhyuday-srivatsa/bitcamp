@@ -1,3 +1,6 @@
+console.log("Script loaded!");
+
+
 function b(
   type,
   attributes,
@@ -79,8 +82,9 @@ document.addEventListener("DOMContentLoaded", function() {
   chatInput = document.body.querySelector('#chatInput');
   
   var text = "Thank you for uploading your degree audit. Please enter any time restrictions or any other information you would like me to know before I suggest courses."
-  
-  addMessage(text, 'bot')
+  setTimeout(() => {
+    addMessage(text, 'bot');
+  }, 500);
 
   document.getElementById("avoid").addEventListener("change", function() {
     if (this.checked) {
@@ -93,7 +97,21 @@ document.addEventListener("DOMContentLoaded", function() {
       document.getElementById("avoid").checked = false;
     }
   });
+
 });
+
+function confirmUpload(){
+  const fileInput = document.getElementById("file-upload");
+  const fileLabel = document.getElementById("file-upload-label");
+
+  if (fileInput.files.length > 0) {
+    fileLabel.textContent = fileInput.files[0].name;
+  } else {
+    fileLabel.textContent = "Upload Degree Audit";
+  }
+}
+
+
 
 function save_times(){
   // Get weekdays

@@ -6,10 +6,10 @@ import requests
 import uuid
 import os
 
-UPLOAD_FOLDER = '/uploads/'
+UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
 ALLOWED_EXTENSIONS = {'txt', 'pdf'}
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', template_folder='templates')
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = "goon"
@@ -22,7 +22,6 @@ def too_large(e):
 @app.route('/', methods=['POST', 'GET'])
 def home():
     if request.method == "POST":
-        print(request.files)
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
@@ -33,15 +32,16 @@ def home():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(str(uuid.uuid4()))
-            file.save(os.path.join("." + app.config['UPLOAD_FOLDER'], filename + '.pdf'))
-            return redirect('/')
+            os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename + '.pdf'))
+            return redirect('/conversation')
     else:
         return render_template("home.html", title="Cinder: Home")
 
 
 def allowed_file(filename):
     return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @app.route('/chat')

@@ -173,7 +173,7 @@ button.send {
     font-size: 12pt;
     font-weight: 600;
     top: 20px;
-    right: 100px;
+    right: 40px;
     position: absolute;
     z-index: 1;
 }
