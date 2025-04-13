@@ -166,9 +166,7 @@ def get_grades():
     result = toolbelt.get_professor_grades(professor, courseID)
     return jsonify({'response': result})
 
-'''
+
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
-'''
-def handler(environ, start_response):
-    return app.wsgi_app(environ, start_response)
+    app.run()
+
