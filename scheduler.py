@@ -111,8 +111,15 @@ def build_valid_schedules_with_metadata(section_data_by_course: List[Dict[str, A
                 "total_credits": total_credits,
                 "courses": combo
             })
-
-    return valid_schedules
+    count = 0
+    short = []
+    for sch in valid_schedules:
+        if count == 50:
+            break
+        else:
+            short.append(sch)
+        count+=1
+    return short
 
 
 

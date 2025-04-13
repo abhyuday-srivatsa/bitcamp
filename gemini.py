@@ -45,13 +45,12 @@ def askAgent(instruction, data):
         prompt += f"""Consider the following restriction given by the user {data}. Use the tools I have given you to ensure the restrictions are met"""
     elif (instruction == "Ask"):
         # Setting tools
-        declarations = [toolbelt.get_course_listings_declaration,toolbelt.get_courses_by_dept_declaration,toolbelt.get_courses_by_gened_declaration,toolbelt.get_professor_grades_declaration]
+        # declarations = [toolbelt.get_course_listings_declaration,toolbelt.get_courses_by_dept_declaration,toolbelt.get_courses_by_gened_declaration,toolbelt.get_professor_grades_declaration]
 
         # Initialize the client and model
         genai.configure(api_key=API_KEY)
         model = genai.GenerativeModel(
-            model_name="gemini-2.0-flash",
-            tools=[{"function_declarations": declarations}]
+            model_name="gemini-2.0-flash"
         )
         prompt = data
         prompt += "Fetch course ID's for the courses that you think would be of interest to the user."
