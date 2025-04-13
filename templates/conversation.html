@@ -1,82 +1,100 @@
-{% extends "layout.html" %}
-{% block header %}
-<link rel="stylesheet" type="text/css" href="/static/conversation.css" />
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block body %}
-<hr width="50%">
-<div class="screen">
-  <div class="chat-container" id="chatContainer">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conversation</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="stylesheet" href="/static/conversation.css" />
+    <script src="/static/conversation.js"></script>
+  </head>
 
-    <div id="bot-messages"></div>
-    <div id="user-messages"></div>
-  </div>
-  <div class="input-box-container">
-    <div class="input-box">
-      <div class="row-one">
-        <input type="text" id="chatInput" placeholder="Start chatting..." />
+  <body class="background">
+    <div class="home">`
+      <div class="buttons">
+        <button onclick="window.location.href='/'">Go Home</button>
+        <button onclick="window.location.href='/tinder'">Tinder</button>
+        <button onclick="window.location.href='/schedule'">View Your Schedule</button>
       </div>
-      <hr>
-      <div class="row-two">
-        <div class="left">
-          <form action="/" enctype="multipart/form-data" method="POST">
-            <label for="file-upload" class="icon" id="file-upload-label">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-plus">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="12" y1="18" x2="12" y2="12" />
-                <line x1="9" y1="15" x2="15" y2="15" />
-              </svg>
-            </label>
-            <input id="file-upload" type="file" name="file" />
-          </form>
-        </div>
-        <div class="right">
-          <button class="icon send" onclick="sendMessage()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up">
-              <line x1="12" y1="19" x2="12" y2="5" />
-              <polyline points="5 12 12 5 19 12" />
-            </svg>
-          </button>
-        </div>
-      </div>
+      <h1 id="title">CinderGPT</h1>
     </div>
+    <br>
+    <hr width="50%">
+    <div class="screen">
+      <div class="chat-container" id="chatContainer">
+        
+        <div id="bot-messages"></div>
+        <div id="user-messages"></div>
+      </div>
+      <div class="input-box-container">
+        <div class="input-box">
+          <div class="row-one">
+            <input type="text" id="chatInput" placeholder="Start chatting..." />
+          </div>
+          <hr>
+          <div class="row-two">
+            <div class="left">
+              <form action="/" enctype="multipart/form-data" method="POST">
+                <label for="file-upload" class="icon" id="file-upload-label">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-plus">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="12" y1="18" x2="12" y2="12" />
+                    <line x1="9" y1="15" x2="15" y2="15" />
+                  </svg>
+                </label>
+                <input id="file-upload" type="file" name="file" />
+              </form>
+            </div>
+            <div class="right">
+              <button class="icon send" onclick="sendMessage()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up">
+                  <line x1="12" y1="19" x2="12" y2="5" />
+                  <polyline points="5 12 12 5 19 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      
+    </div>
+    <div style="display: none;">
+      <span id="logo"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+      </span>
+    </div>
+  </div>
+  <div class="weekday">
+    <label for="monday">M</label>
+    <input type="checkbox" id="monday">
+    <label for="tuesday">T</label>
+    <input type="checkbox" id="tuesday">
+    <label for="wednesday">W</label>
+    <input type="checkbox" id="wednesday">
+    <label for="thursday">Th</label>
+    <input type="checkbox" id="thursday">
+    <label for="friday">F</label>
+    <input type="checkbox" id="friday">
+    </div>
+    <div class="preference">
+      <label for="avoid">Avoid</label>
+      <input type="checkbox" id="avoid">
+      <label for="include">Include</label>
+      <input type="checkbox" id="include">
+    </div>
+    <div class = "time">
+      <label for="start-time">Start Time</label>
+      <input type="time" id="start-time">
+      <label for="end-time">End Time</label>
+      <input type="time" id="end-time">
+    </div>
+    <div class = "save">
+      <button id="save" onclick="save_times()">Save</button>
+    </div>
+  </body>
 
-  </div>
-  <div style="display: none;">
-    <span id="logo"></span>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
-      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-      <circle cx="12" cy="12" r="3" />
-    </svg>
-    </span>
-  </div>
-</div>
-<div class="weekday">
-  <label for="monday">M</label>
-  <input type="checkbox" id="monday">
-  <label for="tuesday">T</label>
-  <input type="checkbox" id="tuesday">
-  <label for="wednesday">W</label>
-  <input type="checkbox" id="wednesday">
-  <label for="thursday">Th</label>
-  <input type="checkbox" id="thursday">
-  <label for="friday">F</label>
-  <input type="checkbox" id="friday">
-</div>
-<div class="preference">
-  <label for="avoid">Avoid</label>
-  <input type="checkbox" id="avoid">
-  <label for="include">Include</label>
-  <input type="checkbox" id="include">
-</div>
-<div class="time">
-  <label for="start-time">Start Time</label>
-  <input type="time" id="start-time">
-  <label for="end-time">End Time</label>
-  <input type="time" id="end-time">
-</div>
-<div class="save">
-  <button id="save" onclick="save_times()">Save</button>
-</div>
-{% endblock %}
+</html>

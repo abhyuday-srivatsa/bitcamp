@@ -98,6 +98,7 @@ body {
 
 .tinder--card {
     display: inline-block;
+    white-space: normal;
     width: 90vw;
     max-width: 900px;
     height: 80vh;
@@ -174,4 +175,71 @@ body {
 
 .fa-remove {
     color: #CDD6DD;
+}
+
+.prof--dropdown {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px 0;
+  }
+  
+  .prof--dropdown label {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+    color: #374151;
+  }
+  
+  .prof--dropdown select {
+    appearance: none; /* Remove default arrow in most browsers */
+    background-color: #f9fafb;
+    color: #1f2937;
+    padding: 12px 16px;
+    font-size: 30px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .prof--dropdown select:focus {
+    border-color: #cf7456;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    outline: none;
+  }
+  
+  .prof--dropdown select:hover {
+    background-color: #f3f4f6;
+  }
+
+  .grade-distribution {
+    min-height: 750px;
+  }
+
+  .course-name h3{
+    font-size: 50px;
+    color: #cf7456;
+    margin-left: 20px;
+    text-align: left;
+  }
+
+  .course-description {
+    height: 200px;
+    overflow-y: auto;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  .course-description p{
+    font-size: 30px;
+    color: black;
+    margin-left: 20px;
+    text-align: left;
+  }
+
+  .grade-distribution canvas {
+    pointer-events: none; /* Disable interactions with the canvas */
 }

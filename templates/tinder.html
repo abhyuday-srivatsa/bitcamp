@@ -1,28 +1,41 @@
-{% extends "layout.html" %}
-{% block header %}
-<link rel="stylesheet" type="text/css" href="/static/tinder.css" />
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cinder</title>
+    <link rel="stylesheet" href="/static/tinder.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <script src="/static/tinder.js"></script>
+    <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-{% block body %}
 
-<div class="home">
-  <h1 id="title">Cinder</h1>
-</div>
-<br>
-<hr width="50%">
-<div class="tinder">
-  <div class="tinder--status">
-    <i class="fa fa-remove"></i>
-    <i class="fa fa-heart"></i>
-  </div>
-
-  <div class="tinder--cards">
-
-  </div>
-
-  <div class="tinder--buttons">
-    <button id="nope"><i class="fa fa-remove"></i></button>
-    <button id="love"><i class="fa fa-heart"></i></button>
-  </div>
-</div>
-{% endblock %}
+  </head>
+  <body class="body">
+    <div class="home">
+      <div class="buttons">
+        <button onclick="window.location.href='/'">Go Home</button>
+        <button onclick="window.location.href='/conversation'">Chat with CinderGPT</button>
+        <button onclick="window.location.href='/schedule'">View Your Schedule</button>
+      </div>
+      <h1 id="title">Cinder</h1>
+    </div>
+    <br>
+    <hr width="50%">
+    <div class="tinder">
+        <div class="tinder--status">
+          <i class="fa fa-remove"></i>
+          <i class="fa fa-heart"></i>
+        </div>
+      
+        <div class="tinder--cards">
+        </div>
+      
+        <div class="tinder--buttons">
+          <button id="nope"><i class="fa fa-remove"></i></button>
+          <button id="love"><i class="fa fa-heart"></i></button>
+        </div>
+      </div>
+  </body>
+</html>
