@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #cf7456;
+      }
+      
+      li {
+        float: left;
+      }
+      
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      li a:hover {
+        background-color: #963d1f;
+      }
+  </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cinder</title>
@@ -13,12 +38,14 @@
 
   </head>
   <body class="body">
+    <ul> 
+      <li><a href="/">Home</a></li>
+      <li><a href="/chat">Chat</a></li>
+      <li><a href="/tinder">Tinder</a></li>
+      <li><a href="/schedule">Schedule</a></li>
+  </ul>
+  {% block body %}{% endblock %}
     <div class="home">
-      <div class="buttons">
-        <button onclick="window.location.href='/'">Go Home</button>
-        <button onclick="window.location.href='/conversation'">Chat with CinderGPT</button>
-        <button onclick="window.location.href='/schedule'">View Your Schedule</button>
-      </div>
       <h1 id="title">Cinder</h1>
     </div>
     <br>

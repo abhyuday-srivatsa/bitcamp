@@ -50,7 +50,7 @@ body {
 .input-box-container {
     max-width: 1500px;
     position: absolute;
-    top: 85%;
+    top: 75%;
     width: 100%;
 }
 
@@ -172,7 +172,7 @@ button.send {
     color: var(--quaternary);
     font-size: 12pt;
     font-weight: 600;
-    top: 20px;
+    top: 50px;
     right: 40px;
     position: absolute;
     z-index: 1;
@@ -182,7 +182,7 @@ button.send {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    top: 55px;
+    top: 85px;
     right: 20px;
     position: absolute;
     row-gap: 5px;
@@ -192,7 +192,7 @@ button.send {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    top: 50px;
+    top: 80px;
     right: 100px;
     position: absolute;
 }
@@ -201,7 +201,7 @@ button.send {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    top: 160px;
+    top: 190px;
     right: 20px;
     position: absolute;
 }
