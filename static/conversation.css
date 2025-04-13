@@ -2,7 +2,7 @@ body {
     max-width: none;
 }
 
-.screen{
+.screen {
     margin: auto;
     max-width: 1500px;
 }
@@ -27,22 +27,22 @@ body {
     margin: 0.25rem;
     border-radius: 6px;
     font-size: 20pt;
-  }
-  
-  .message.user {
+}
+
+.message.user {
     background-color: var(--highlight);
     color: black;
-  }
-  
-  .message.bot {
+}
+
+.message.bot {
     background-color: var(--tertiary);
     color: var(--secondary);
-  }
+}
 
 .text_row.user {
     justify-content: flex-end;
 }
-  
+
 .text_row.bot {
     justify-content: flex-start;
 }
@@ -51,17 +51,16 @@ body {
     max-width: 1500px;
     position: absolute;
     top: 85%;
-    /* left: 40%; */
     width: 100%;
 }
 
 .input-box {
     border-radius: 10px;
     margin: 0 auto;
-    width: 1500px;
+    max-width: 800px;
     background: var(--tertiary);
     border: 2px solid lightgray;
-    padding: 0.5rem;    
+    padding: 0.5rem;
 }
 
 input {
@@ -112,13 +111,13 @@ button.send {
     justify-content: space-between;
 }
 
-.right{
+.right {
     width: 70px;
     border-radius: 20px;
 }
 
-.left{
-    width:70px;
+.left {
+    width: 70px;
     border-radius: 100px;
 }
 
@@ -129,45 +128,54 @@ button.send {
 
 .home {
     display: flex;
-    justify-content: center; /* Center the h1 */
+    justify-content: center;
+    /* Center the h1 */
     align-items: center;
     position: relative;
     top: 2rem;
-  }
-  
-  .buttons {
+}
+
+.buttons {
     position: absolute;
-    left: 5rem; /* Adds space from the left */
-  }
-  
-  #title {
+    left: 5rem;
+    /* Adds space from the left */
+}
+
+#title {
     margin: 0;
-  }
+}
 
 
-.home button{
-    padding: 14px 28px;         
-    font-size: 20pt;            
-    border: none;               
-    border-radius: 8px;         
-    background-color: var(--highlight);  
-    color: white;               
+.home button {
+    padding: 14px 28px;
+    font-size: 20pt;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--highlight);
+    color: white;
     cursor: pointer;
 }
 
-.home button:hover{
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+.home button:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.left label:hover{
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+.left label:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
-.right button:hover{
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+
+.right button:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
+
 .weekday {
-    color: var(--quaternary); font-size: 12pt; font-weight: 600; top: 20px; 
-    right: 40px; position: absolute; z-index: 1;
+    color: var(--quaternary);
+    font-size: 12pt;
+    font-weight: 600;
+    top: 20px;
+    right: 40px;
+    position: absolute;
+    z-index: 1;
 }
 
 .preference {
@@ -175,7 +183,7 @@ button.send {
     flex-direction: column;
     justify-content: center;
     top: 55px;
-    right: 20px;     
+    right: 20px;
     position: absolute;
     row-gap: 5px;
 }
@@ -185,7 +193,7 @@ button.send {
     flex-direction: column;
     justify-content: center;
     top: 50px;
-    right: 100px;     
+    right: 100px;
     position: absolute;
 }
 
@@ -194,6 +202,6 @@ button.send {
     flex-direction: column;
     justify-content: center;
     top: 160px;
-    right: 20px;     
+    right: 20px;
     position: absolute;
 }

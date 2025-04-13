@@ -51,7 +51,7 @@ def home():
 
             return render_template('conversation.html')
     else:
-        return render_template("home.html")
+        return render_template("home.html", title="Cinder: Home")
 
 
 def allowed_file(filename):
@@ -59,17 +59,17 @@ def allowed_file(filename):
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@app.route('/conversation')
+@app.route('/chat')
 def upload():
-    return render_template("conversation.html")
+    return render_template("conversation.html", title="Chat with Cinder")
 
 @app.route('/tinder', methods=['GET', 'POST'])
 def tinder():
-    return render_template("tinder.html")
+    return render_template("tinder.html", title="Match")
 
 @app.route('/schedule')
 def schedule():
-    return render_template("schedule.html")
+    return render_template("schedule.html", title="Build your schedule")
 
 @app.route('/ask_agent', methods=['POST'])
 def ask_agent():
