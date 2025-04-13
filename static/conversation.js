@@ -129,6 +129,39 @@ function sendMessage() {
     
 }
 
+
+function goToTinder(){
+  setTimeout(() => {
+    addMessage("Preparing your Cinder experience", 'bot');
+  }, 1000);
+  fetch('/final_agent', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ input: "" })
+  })
+  .then(response => response.json())
+  .then(data => {
+    const botResponse = data.response;
+    const regex = /[\d]+\..+([A-Z]{4}[0-9]{3})/g;
+    const matches = [];
+    let match;
+
+    while ((match = regex.exec(botResponse)) !== null) {
+      matches.push(match[1]);
+    }
+
+    localStorage.setItem('matches', JSON.stringify(matches));
+    window.location.href = '/tinder';
+    
+  }).catch(error => {
+    console.error('Error calling Flask:', error);
+    addMessage("Sorry, something went wrong.", 'bot');
+  });
+
+}
+
 let logo, container, userMsgs, botMsgs, chatInput;
 
 window.addEventListener('keydown', (evt) => {
