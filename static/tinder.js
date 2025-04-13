@@ -4,12 +4,12 @@ document.addEventListener('DOMContentLoaded', function () {
     NUM_CARDS = matches.length
     const likedCards = [];
     const cardPromises = [];
+    let courseName = ""
 
-
-    for (let i = 0; i < NUM_CARDS; i++){
+    for (let i = 0; i < NUM_CARDS   ; i++){
         if (matches[i]){
             const promise = fetch('/get_courses', {
-                method: 'POST',
+                method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -19,15 +19,118 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 const course = data.response;
                 
-                courseName = course['course_name']
-                courseDescription = course['course_description']
-                if (courseName){
-                    console.log("CREATED CARD FOR ", courseName)
-                    var newCard = document.createElement('div');
-                    newCard.classList.add('tinder--card');
-                    newCard.innerHTML = `<h3>${courseName}</h3><p>${courseDescription}</p>`;
-                
-                    document.querySelector('.tinder--cards').appendChild(newCard);
+                if (course){
+                    courseName = course['course_name']
+                    if (courseName){
+                        courseDescription = course['course_description']
+                        allProfs = []
+                        sections = course['sections']
+                        sections.forEach((section, i) => {
+                            profs = section['professor(s)']
+
+                            allProfs = allProfs.concat(profs)
+                            allProfs.sort()
+                            
+                        });
+
+                        allProfs = [...new Set(allProfs)]
+                        let professorOptions = allProfs.map(prof => {
+                            return `<option value="${prof}">${prof}</option>`;
+                        }).join("");
+
+                        var newCard = document.createElement('div');
+                        newCard.classList.add('tinder--card');
+                        newCard.innerHTML = `
+        <div class="prof--dropdown">
+            <label for="profs"></label>
+            <select name="profs" id="profs">
+                <option value="0">Select Professor</option>
+                ${professorOptions}
+            </select>
+        </div>
+
+        <div class="grade-distribution">
+            <canvas id="gradeChart-${i}"></canvas>
+        </div>
+
+        <div class="course-name">
+            <h3>${courseName}</h3>
+        </div>
+
+        <div class="course-description">
+            <p>${courseDescription}</p>
+        </div>
+        `;
+                        document.querySelector('.tinder--cards').appendChild(newCard);
+                        
+                        const dropdown = newCard.querySelector('select[name="profs"]');
+                        console.log(courseName)
+                        const ID = courseName.slice(0, 7);
+                        dropdown.addEventListener('change', function () {
+                            const selectedProfessor = this.value;
+                            fetch('/get_grades', {
+                                method: 'POST',
+                                headers: {
+                                'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ 
+                                    professor: selectedProfessor,
+                                    courseID: ID
+                                })
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                
+                                const grades = data.response;
+                                console.log(grades);
+                                const gradeLabels = Object.keys(grades.grade_totals); // x-axis labels (e.g., grade categories)
+                                const gradeValues = Object.values(grades.grade_totals); // y-axis values (e.g., percentage)
+
+                                // Create the chart
+                                const canvasId = `gradeChart-${i}`;
+                                const ctx = document.getElementById(canvasId).getContext('2d');
+
+                                if(Chart.getChart(ctx)) {
+                                    Chart.getChart(ctx)?.destroy()
+                                  }
+
+                                const gradeChart = new Chart(ctx, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: gradeLabels,  // X-axis labels (grade types)
+                                        datasets: [{
+                                            label: 'Grade Distribution',
+                                            data: gradeValues,  // Y-axis data (frequency of each grade)
+                                            backgroundColor: '#4CAF50',  // Color for the bars
+                                            borderColor: '#388E3C',
+                                            borderWidth: 1
+                                        }]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true,  // Ensure the Y-axis starts at zero
+                                                title: {
+                                                    display: true,
+                                                    text: 'Frequency'
+                                                }
+                                            },
+                                            x: {
+                                                title: {
+                                                    display: true,
+                                                    text: 'Grade'
+                                                }
+                                            }
+                                        }
+                                    }
+                                });
+                            })
+                            .catch(error => {
+                                console.error('Error fetching grades:', error);
+                            });
+                        });
+                    }
                 }
             });
             cardPromises.push(promise);

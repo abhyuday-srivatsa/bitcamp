@@ -91,9 +91,19 @@ def final_agent():
 def get_courses():
     data = request.json
     courseID = data.get('input', '')
-
+    print("GETTING: ", courseID)
     result = toolbelt.get_course_listings(courseID)
     return jsonify({'response': result})
+
+@app.route('/get_grades', methods=['POST'])
+def get_grades():
+    data = request.json
+    professor = data.get('professor')
+    courseID = data.get('courseID')
+
+    result = toolbelt.get_professor_grades(professor, courseID)
+    return jsonify({'response': result})
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
