@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const cardPromises = [];
     let courseName = ""
 
-    for (let i = 0; i <= NUM_CARDS; i++){
+    for (let i = 0; i < NUM_CARDS; i++){
         if (matches[i]){
             const promise = fetch('/get_courses', {
                 method: 'POST', 
