@@ -117,6 +117,6 @@ input[type="file"] {
     /* Center horizontally */
     align-items: center;
     /* Center vertically */
-    height: 100vh;
+    height: 90vh;
     /* Full viewport height */
 }

@@ -137,7 +137,7 @@ def get_course_listings(course_id):
                             'holdfile':int(holdfile_count) if holdfile_count!="N/A" else 0
                             })
         return {
-                'course_name':f'{str(scraper.find('div',class_='course-id').text)}: {scraper.find('span', class_='course-title').text.strip()}',
+                'course_name':f"{str(scraper.find('div',class_='course-id').text)}: {scraper.find('span', class_='course-title').text.strip()}",
                 'credit_amount':credits,'course_description':desc,
                 'gen-eds satisifed':geneds,
                 'sections':complete_sections
