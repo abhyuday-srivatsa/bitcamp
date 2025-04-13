@@ -23,19 +23,13 @@ def schedule(course_id, professor=None):
         'sections': filtered_listings
     }
 
-
-
 def startup(user_stuff):
     for course in user_stuff:
         course_id, professor = course
         sections.append(schedule(course_id, professor))
 
-
-
-
 def convert_to_24_hour(time_str: str):
     return datetime.strptime(time_str.strip().lower(), "%I:%M%p").time()
-
 
 def parse_meeting(meeting: Dict[str, Any]):
     if "days" not in meeting or "start_time" not in meeting or "end_time" not in meeting:
@@ -47,7 +41,6 @@ def parse_meeting(meeting: Dict[str, Any]):
 
     return [{"day": day, "start": start, "end": end} for day in days]
 
-
 def meetings_conflict(meetings1: List[Dict[str, Any]], meetings2: List[Dict[str, Any]]):
     for m1 in meetings1:
         for m2 in meetings2:
@@ -56,13 +49,11 @@ def meetings_conflict(meetings1: List[Dict[str, Any]], meetings2: List[Dict[str,
                     return True
     return False
 
-
 def is_online(section: Dict[str, Any]) -> bool:
     for meeting in section.get("meeting_schedule", []):
         if "days" in meeting and "start_time" in meeting and "end_time" in meeting:
             return False
     return True
-
 
 def build_valid_schedules_with_metadata(section_data_by_course: List[Dict[str, Any]],
                                         credit_range=(12, 18)) -> List[Dict[str, Any]]:

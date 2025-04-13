@@ -1,16 +1,25 @@
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("avoid").addEventListener("change", function() {
-      if (this.checked) {
-        document.getElementById("include").checked = false;
-      }
-    });
-  
-    document.getElementById("include").addEventListener("change", function() {
-      if (this.checked) {
-        document.getElementById("avoid").checked = false;
-      }
-    });
-  });
+default_bot_messages = [
+  "Got it! Thanks for the update.",
+  "Sure thing! Let me take care of that.",
+  "All set! Let me know if there's anything else.",
+  "Noted. I’ll keep that in mind.",
+  "Thanks! I’ve saved your preferences.",
+  "Just a moment while I check that for you.",
+  "You're all caught up!",
+  "Great! Moving on to the next step.",
+  "Sounds good.",
+  "Alright, here’s what I found.",
+  "On it!",
+  "Thanks for confirming.",
+  "Okay! Let’s continue.",
+  "Done! What’s next?",
+  "No problem at all.",
+  "I’ve updated that for you.",
+  "Got everything I need—thank you!",
+  "Thanks! That helps a lot.",
+  "You’re good to go.",
+  "Message received. ✅"
+]
 
 window.addEventListener('load', () => {
   logo = document.body.querySelector('#logo')
@@ -18,15 +27,17 @@ window.addEventListener('load', () => {
   userMsgs = document.body.querySelector('#user-messages');
   botMsgs = document.body.querySelector('#bot-messages');
   chatInput = document.body.querySelector('#chatInput');
+  text = ""
 
   const filePassed = localStorage.getItem("filePassed") === "true";
-  console.log(filePassed)
   if (filePassed){
     var text = "Thank you for uploading your degree audit. Please enter any time restrictions or any other information you would like me to know before I suggest courses."
+  } else {
+    var text = "Please tell me about the courses you have taken and the courses you want to take."
+  }
   setTimeout(() => {
     addMessage(text, 'bot');
   }, 500);
-  }
 
 });
 
@@ -110,7 +121,8 @@ function sendMessage() {
       });
   
       setTimeout(() => {
-        addMessage("Got it! Thanks for the update.", 'bot');
+        message = default_bot_messages[Math.floor(Math.random() * 20)]
+        addMessage(message, 'bot');
       }, 1000);
     }
 

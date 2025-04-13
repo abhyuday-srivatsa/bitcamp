@@ -99,9 +99,10 @@ body {
 .tinder--card {
     display: inline-block;
     white-space: normal;
-    width: 90vw;
+    width: 400px;
     max-width: 900px;
-    height: 80vh;
+    height: 550px;
+    margin-bottom: -20px;
     background: #FFFFFF;
     padding-bottom: 40px;
     border-radius: 8px;
@@ -143,7 +144,7 @@ body {
 .tinder--buttons {
     flex: 0 0 100px;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 40px;
 }
 
 .tinder--buttons button {
@@ -181,21 +182,23 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 20px 0;
   }
+
+  .prof--dropdown select{
+    height: 20px;
+  }
   
   .prof--dropdown label {
-    font-size: 30px;
-    font-weight: 500;
-    margin-bottom: 8px;
+    font-size: 15px;
     display: block;
     color: #374151;
   }
   
   .prof--dropdown select {
-    appearance: none; /* Remove default arrow in most browsers */
+    appearance: none; 
     background-color: #f9fafb;
     color: #1f2937;
-    padding: 12px 16px;
-    font-size: 30px;
+    padding: 2px 3px;
+    font-size: 15px;
     border: 1px solid #d1d5db;
     border-radius: 12px;
     width: 100%;
@@ -216,30 +219,26 @@ body {
   }
 
   .grade-distribution {
-    min-height: 650px;
+    min-height: 200px;
   }
 
+
   .course-name h3{
-    font-size: 50px;
+    font-size: 30px;
     color: #cf7456;
     margin-left: 20px;
     text-align: left;
   }
 
   .course-description {
-    height: 300px;
     overflow-y: auto;
     flex-direction: column;
     box-sizing: border-box;
   }
 
   .course-description p{
-    font-size: 30px;
+    font-size: 20px;
     color: black;
     margin-left: 20px;
     text-align: left;
   }
-
-  .grade-distribution canvas {
-    pointer-events: none; /* Disable interactions with the canvas */
-}
