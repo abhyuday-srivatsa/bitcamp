@@ -268,11 +268,12 @@ function checkIfFinished() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({input : likedCards})
+            body: JSON.stringify({input :   likedCards})
         })
-        .then(response => {
-            if (response.redirected) {
-                window.location.href = response.url
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "ok") {
+                window.location.href = "/dynamic_schedule";
             }
         })
         

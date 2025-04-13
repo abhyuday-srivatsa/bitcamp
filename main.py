@@ -92,17 +92,18 @@ def generate_schedule():
     course_list = data.get('input', [])
 
     session["dynamic_courses"] = course_list
-    return redirect(url_for("show_dynamic_schedules"))
+    return jsonify({"status": "ok"})
 
 @app.route("/dynamic_schedule", methods=['GET'])
 def show_dynamic_schedules():
     dynamic = session.get("dynamic_courses", [])
     dynamic_tuples = [tuple(sublist) for sublist in dynamic]
     print(dynamic_tuples)
+    scheduler.sections=[]
     scheduler.startup(dynamic_tuples)
     all_schedules = scheduler.build_valid_schedules_with_metadata(scheduler.sections, credit_range=(1,20))
     formatted = []
-        
+    print("ALL SCHEDULES", all_schedules)
     for sched in all_schedules:
         events, online = scheduler.format_events(sched)
         formatted.append({
@@ -111,6 +112,7 @@ def show_dynamic_schedules():
             "online_courses": online
         })
 
+    print("FORMATTED", formatted)
     return render_template("schedule.html", schedules=formatted)
 
 '''

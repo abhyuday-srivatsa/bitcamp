@@ -192,7 +192,7 @@ def get_current_week_dates():
 #                             "end": end_dt.isoformat(),
 #                         })
 #     return events
-
+#
 def format_events(schedule):
     events = []
     online_only_courses = []
