@@ -216,7 +216,7 @@ body {
   }
 
   .grade-distribution {
-    min-height: 750px;
+    min-height: 650px;
   }
 
   .course-name h3{
@@ -227,7 +227,7 @@ body {
   }
 
   .course-description {
-    height: 200px;
+    height: 300px;
     overflow-y: auto;
     flex-direction: column;
     box-sizing: border-box;
