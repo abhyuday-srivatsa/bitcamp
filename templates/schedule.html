@@ -1,113 +1,153 @@
-{% extends "layout.html" %}
-{% block header %}
-<link rel="stylesheet" type="text/css" href="/static/schedule.css" />
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>All Valid Schedules</title>
 
-{% block body %}
+  <!-- ✅ Correct FullCalendar version -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.js"></script>
+  <style>
+    .schedule-block {
+      max-width: 900px;
+      margin: 40px auto;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .calendar-container {
+      margin-bottom: 20px;
+      height: 600px; /* ✅ This is REQUIRED */
+    }
+    h2, h3 {
+      text-align: center;
+    }
+  .schedule-block {
+    max-width: 900px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    padding: 0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
 
-<div class="home">
-    <h1 id="title">Schedule</h1>
-</div>
-<br>
-<br>
+  .schedule-header {
+    background-color: #f2f2f2;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-<div class="schedule-container">
-    <div class="schedule-row">
-        <div class="schedule-item time-label">Time</div>
-        <div class="schedule-item">M</div>
-        <div class="schedule-item">T</div>
-        <div class="schedule-item">W</div>
-        <div class="schedule-item">Th</div>
-        <div class="schedule-item">F</div>
-    </div>
-    <div class="schedule-row">
-        <div class="schedule-item time-label">8:00 AM</div>
-        <div class="schedule-cell" data-day="monday" data-time="8"></div>
-        <div class="schedule-cell" data-day="tuesday" data-time="8"></div>
-        <div class="schedule-cell" data-day="wednesday" data-time="8"></div>
-        <div class="schedule-cell" data-day="thursday" data-time="8"></div>
-        <div class="schedule-cell" data-day="friday" data-time="8"></div>
-    </div>
-    <div class="schedule-row">
-        <div class="schedule-item time-label">9:00 AM</div>
-        <div class="schedule-cell" data-day="monday" data-time="9"></div>
-        <div class="schedule-cell" data-day="tuesday" data-time="9"></div>
-        <div class="schedule-cell" data-day="wednesday" data-time="9"></div>
-        <div class="schedule-cell" data-day="thursday" data-time="9"></div>
-        <div class="schedule-cell" data-day="friday" data-time="9"></div>
-    </div>
-    <div class="schedule-row">
-        <div class="schedule-item time-label">10:00 AM</div>
-        <div class="schedule-cell" data-day="monday" data-time="10"></div>
-        <div class="schedule-cell" data-day="tuesday" data-time="10"></div>
-        <div class="schedule-cell" data-day="wednesday" data-time="10"></div>
-        <div class="schedule-cell" data-day="thursday" data-time="10"></div>
-        <div class="schedule-cell" data-day="friday" data-time="10"></div>
-    </div>
-    <div class="schedule-row">
-        <div class="schedule-item time-label">11:00 AM</div>
-        <div class="schedule-cell" data-day="monday" data-time="11"></div>
-        <div class="schedule-cell" data-day="tuesday" data-time="11"></div>
-        <div class="schedule-cell" data-day="wednesday" data-time="11"></div>
-        <div class="schedule-cell" data-day="thursday" data-time="11"></div>
-        <div class="schedule-cell" data-day="friday" data-time="11"></div>
-    </div>
-    <div class="schedule-row">
-        <div class="schedule-item time-label">12:00 PM</div>
-        <div class="schedule-cell" data-day="monday" data-time="12"></div>
-        <div class="schedule-cell" data-day="tuesday" data-time="12"></div>
-        <div class="schedule-cell" data-day="wednesday" data-time="12"></div>
-        <div class="schedule-cell" data-day="thursday" data-time="12"></div>
-        <div class="schedule-cell" data-day="friday" data-time="12"></div>
-    </div>
-    <div class="schedule-row">
-        <div class="schedule-item time-label">1:00 PM</div>
-        <div class="schedule-cell" data-day="monday" data-time="13"></div>
-        <div class="schedule-cell" data-day="tuesday" data-time="13"></div>
-        <div class="schedule-cell" data-day="wednesday" data-time="13"></div>
-        <div class="schedule-cell" data-day="thursday" data-time="13"></div>
-        <div class="schedule-cell" data-day="friday" data-time="13"></div>
-    </div>
-    <div class="schedule-row">
-        <div class="schedule-item time-label">2:00 PM</div>
-        <div class="schedule-cell" data-day="monday" data-time="14"></div>
-        <div class="schedule-cell" data-day="tuesday" data-time="14"></div>
-        <div class="schedule-cell" data-day="wednesday" data-time="14"></div>
-        <div class="schedule-cell" data-day="thursday" data-time="14"></div>
-        <div class="schedule-cell" data-day="friday" data-time="14"></div>
-    </div>
-    <div class="schedule-row">
-        <div class="schedule-item time-label">3:00 PM</div>
-        <div class="schedule-cell" data-day="monday" data-time="15"></div>
-        <div class="schedule-cell" data-day="tuesday" data-time="15"></div>
-        <div class="schedule-cell" data-day="wednesday" data-time="15"></div>
-        <div class="schedule-cell" data-day="thursday" data-time="15"></div>
-        <div class="schedule-cell" data-day="friday" data-time="15"></div>
-    </div>
-    <div class="schedule-row">
-        <div class="schedule-item time-label">4:00 PM</div>
-        <div class="schedule-cell" data-day="monday" data-time="16"></div>
-        <div class="schedule-cell" data-day="tuesday" data-time="16"></div>
-        <div class="schedule-cell" data-day="wednesday" data-time="16"></div>
-        <div class="schedule-cell" data-day="thursday" data-time="16"></div>
-        <div class="schedule-cell" data-day="friday" data-time="16"></div>
-    </div>
-    <div class="schedule-row">
-        <div class="schedule-item time-label">5:00 PM</div>
-        <div class="schedule-cell" data-day="monday" data-time="17"></div>
-        <div class="schedule-cell" data-day="tuesday" data-time="17"></div>
-        <div class="schedule-cell" data-day="wednesday" data-time="17"></div>
-        <div class="schedule-cell" data-day="thursday" data-time="17"></div>
-        <div class="schedule-cell" data-day="friday" data-time="17"></div>
-    </div>
-</div>
+  .schedule-content {
+    padding: 20px;
+    display: none; /* Hidden by default */
+  }
 
-<div id="edit-modal" class="modal" style="display:none;">
-    <div class="modal-content">
-        <h3>Enter Class Information</h3>
-        <span class="close-button" id="closeModal">&times;</span>
-        <input type="text" id="eventInput" placeholder="Class Name" />
-        <button id="saveEvent">Save</button>
+  .calendar-container {
+    margin-bottom: 20px;
+    height: 600px;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  .toggle-icon {
+    font-size: 1.1em;
+    transition: transform 0.3s;
+  }
+
+  .rotate {
+    transform: rotate(90deg);
+  }
+
+
+  </style>
+</head>
+<body>
+
+  <h1 style="text-align:center;">📚 All Valid Class Schedules</h1>
+
+  {% for sched in schedules %}
+  <div class="schedule-block">
+    <div class="schedule-header" onclick="toggleSchedule({{ loop.index0 }})">
+      Schedule {{ loop.index }} — {{ sched.total_credits }} Credits
+      <span class="toggle-icon" id="icon{{ loop.index0 }}">▶</span>
     </div>
-</div>
-{% endblock %}
+    <div class="schedule-content" id="content{{ loop.index0 }}">
+      <div id="calendar{{ loop.index0 }}" class="calendar-container"></div>
+
+      {% if sched.online_courses %}
+        <h3>💻 Online-Only Courses</h3>
+        <ul>
+          {% for oc in sched.online_courses %}
+            <li>
+              <strong>{{ oc.title }}</strong> — {{ ', '.join(oc.professors) }}<br>
+              <em>{{ oc.notes }}</em>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No online-only courses.</p>
+      {% endif %}
+    </div>
+  </div>
+{% endfor %}
+
+
+<script>
+    const calendarInstances = [];
+  
+    function toggleSchedule(index) {
+      const content = document.getElementById(`content${index}`);
+      const icon = document.getElementById(`icon${index}`);
+      const isVisible = content.style.display === "block";
+  
+      if (isVisible) {
+        content.style.display = "none";
+        icon.classList.remove("rotate");
+      } else {
+        content.style.display = "block";
+        icon.classList.add("rotate");
+  
+        // Wait for the layout to update, then resize the calendar
+        setTimeout(() => {
+          if (calendarInstances[index]) {
+            calendarInstances[index].updateSize();
+          }
+        }, 10); // small delay ensures layout has updated
+      }
+    }
+  
+    document.addEventListener("DOMContentLoaded", function () {
+      const allSchedules = {{ schedules | tojson | safe }};
+  
+      allSchedules.forEach((sched, index) => {
+        const calendarEl = document.getElementById(`calendar${index}`);
+        if (!calendarEl) return;
+  
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'timeGridWeek',
+          firstDay: 1,
+          weekends: false,
+          headerToolbar: false,
+          dayHeaderFormat: { weekday: 'short' },
+          slotMinTime: '08:00:00',
+          slotMaxTime: '20:00:00',
+          events: sched.events
+        });
+  
+        calendar.render();
+        calendarInstances[index] = calendar;
+      });
+    });
+  </script>
+  
+  
+
+</body>
+</html>

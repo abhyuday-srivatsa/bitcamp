@@ -8,7 +8,7 @@ import uuid
 import os
 import gemini
 import toolbelt
-
+import scheduler
 UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
 ALLOWED_EXTENSIONS = {'txt', 'pdf'}
 
@@ -67,9 +67,37 @@ def upload():
 def tinder():
     return render_template("tinder.html", title="Match")
 
-@app.route('/schedule')
-def schedule():
-    return render_template("schedule.html", title="Build your schedule")
+# @app.route('/schedule')
+# def schedule():
+# #     return render_template("schedule.html", title="Build your schedule")
+# @app.route("/schedule")
+# def show_schedule():
+#     all_schedules = scheduler.build_valid_schedules_with_metadata(scheduler.sections, credit_range=(12, 18))
+
+#     if not all_schedules:
+#         return "No valid schedules found."
+
+#     best_schedule = all_schedules[0]  # or let user pick one
+#     events = scheduler.format_events(best_schedule)  # converts it to calendar-compatible blocks
+#     print(events)
+#     return render_template("schedule.html", events=events)
+@app.route("/schedule")
+@app.route("/schedules")
+def show_schedules():
+    schedules = scheduler.build_valid_schedules_with_metadata(scheduler.sections)
+    formatted = []
+
+    for sched in schedules:
+        events, online_courses = scheduler.format_events(sched)
+        formatted.append({
+            "total_credits": sched["total_credits"],
+            "events": events,
+            "online_courses": online_courses
+        })
+
+    return render_template("schedule.html", schedules=formatted)
+
+
 
 @app.route('/ask_agent', methods=['POST'])
 def ask_agent():
