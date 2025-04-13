@@ -128,8 +128,8 @@ button.send {
 }
 
 .left {
-    width: 30px;
-    border-radius: 100px;
+    width: 100px;
+    border-radius: 10px;
 }
 
 #logo {

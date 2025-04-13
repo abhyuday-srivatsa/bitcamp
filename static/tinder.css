@@ -234,6 +234,7 @@ body {
     overflow-y: auto;
     flex-direction: column;
     box-sizing: border-box;
+    max-height: 150px;
   }
 
   .course-description p{
