@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template, flash, redirect, make_response, url_for
+from flask import Flask, request, jsonify, render_template, flash, redirect, make_response, url_for, session
 
 from werkzeug.utils import secure_filename
 
@@ -7,8 +7,13 @@ import requests
 import uuid
 import os
 import gemini
-import toolbelt
-import scheduler
+import re
+from itertools import product
+from datetime import datetime, timedelta
+from typing import List, Dict, Any
+import toolbelt,scheduler
+
+user_reqs = None
 UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
 ALLOWED_EXTENSIONS = {'txt', 'pdf'}
 
@@ -81,24 +86,53 @@ def tinder():
 #     events = scheduler.format_events(best_schedule)  # converts it to calendar-compatible blocks
 #     print(events)
 #     return render_template("schedule.html", events=events)
-@app.route("/schedule")
-@app.route("/schedules")
-def show_schedules():
-    schedules = scheduler.build_valid_schedules_with_metadata(scheduler.sections)
-    formatted = []
+@app.route("/generate_schedule", methods=['POST'])
+def generate_schedule():
+    data = request.json
+    course_list = data.get('input', [])
 
-    for sched in schedules:
-        events, online_courses = scheduler.format_events(sched)
+    session["dynamic_courses"] = course_list
+    return jsonify({"status": "ok"})
+
+@app.route("/dynamic_schedule", methods=['GET'])
+def show_dynamic_schedules():
+    dynamic = session.get("dynamic_courses", [])
+    dynamic_tuples = [tuple(sublist) for sublist in dynamic]
+    print(dynamic_tuples)
+    scheduler.sections=[]
+    scheduler.startup(dynamic_tuples)
+    all_schedules = scheduler.build_valid_schedules_with_metadata(scheduler.sections, credit_range=(1,20))
+    formatted = []
+    print("ALL SCHEDULES", all_schedules)
+    for sched in all_schedules:
+        events, online = scheduler.format_events(sched)
         formatted.append({
             "total_credits": sched["total_credits"],
             "events": events,
-            "online_courses": online_courses
+            "online_courses": online
         })
 
+    print("FORMATTED", formatted)
     return render_template("schedule.html", schedules=formatted)
 
+'''
+@app.route("/schedule")
+def show_schedules():
+    print("goes here!")
+    print(user_reqs)
+    scheduler.startSchedule(user_reqs)
+    return render_template("schedule.html", schedules=scheduler.formatted)
 
-
+@app.route("/set_sections",methods=["POST"])
+def set_sections():
+    global user_reqs
+    if request.method == "POST":
+        data = request.json
+        info = data.get('input','')
+        user_reqs = info
+        return jsonify({'status': 'ok'})
+    return "BAD"
+'''
 @app.route('/ask_agent', methods=['POST'])
 def ask_agent():
     global conversation_prompt
@@ -134,4 +168,4 @@ def get_grades():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    app.run(debug=True, port=5000)

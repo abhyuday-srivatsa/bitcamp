@@ -18,7 +18,8 @@ body {
 
 .text_row {
     display: flex;
-    width: 100%;
+    margin-left: 20%;
+    margin-right:20%
 }
 
 .message {
@@ -26,7 +27,7 @@ body {
     padding: 0.75rem;
     margin: 0.25rem;
     border-radius: 6px;
-    font-size: 20pt;
+    font-size: 10pt;
 }
 
 .message.user {

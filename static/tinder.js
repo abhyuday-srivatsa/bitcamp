@@ -1,12 +1,13 @@
+likedCards = []
+
 document.addEventListener('DOMContentLoaded', function () {
-    const matches = JSON.parse(localStorage.getItem('matches'));
-    console.log(matches)
+    matches = JSON.parse(localStorage.getItem('matches'));
+    matches = [...new Set(matches)]
     NUM_CARDS = matches.length
-    const likedCards = [];
     const cardPromises = [];
     let courseName = ""
 
-    for (let i = 0; i < NUM_CARDS   ; i++){
+    for (let i = 0; i <= NUM_CARDS; i++){
         if (matches[i]){
             const promise = fetch('/get_courses', {
                 method: 'POST', 
@@ -68,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         const ID = courseName.slice(0, 7);
                         dropdown.addEventListener('change', function () {
                             const selectedProfessor = this.value;
+                            newCard.setAttribute('data-selected-professor', selectedProfessor);
                             fetch('/get_grades', {
                                 method: 'POST',
                                 headers: {
@@ -82,49 +84,60 @@ document.addEventListener('DOMContentLoaded', function () {
                             .then(data => {
                                 
                                 const grades = data.response;
-                                console.log(grades);
-                                const gradeLabels = Object.keys(grades.grade_totals); // x-axis labels (e.g., grade categories)
-                                const gradeValues = Object.values(grades.grade_totals); // y-axis values (e.g., percentage)
+                                if (grades['avg_grade']){
+                                    const desiredGradeOrder = [
+                                        "A+", "A", "A-",
+                                        "B+", "B", "B-",
+                                        "C+", "C", "C-",
+                                        "D+", "D", "D-",
+                                        "F", "W", "Other"
+                                        ];
+                                    const gradeTotals = grades.grade_totals;
 
-                                // Create the chart
-                                const canvasId = `gradeChart-${i}`;
-                                const ctx = document.getElementById(canvasId).getContext('2d');
+                                    const gradeLabels = desiredGradeOrder.filter(grade => grade in gradeTotals);
+                                    const gradeValues = gradeLabels.map(label => gradeTotals[label]);
 
-                                if(Chart.getChart(ctx)) {
-                                    Chart.getChart(ctx)?.destroy()
-                                  }
+                                    // Create the chart
+                                    const canvasId = `gradeChart-${i}`;
+                                    const ctx = document.getElementById(canvasId).getContext('2d');
 
-                                const gradeChart = new Chart(ctx, {
-                                    type: 'bar',
-                                    data: {
-                                        labels: gradeLabels,  // X-axis labels (grade types)
-                                        datasets: [{
-                                            label: 'Grade Distribution',
-                                            data: gradeValues,  // Y-axis data (frequency of each grade)
-                                            backgroundColor: '#4CAF50',  // Color for the bars
-                                            borderColor: '#388E3C',
-                                            borderWidth: 1
-                                        }]
-                                    },
-                                    options: {
-                                        responsive: true,
-                                        scales: {
-                                            y: {
-                                                beginAtZero: true,  // Ensure the Y-axis starts at zero
-                                                title: {
-                                                    display: true,
-                                                    text: 'Frequency'
-                                                }
-                                            },
-                                            x: {
-                                                title: {
-                                                    display: true,
-                                                    text: 'Grade'
+                                    if(Chart.getChart(ctx)) {
+                                        Chart.getChart(ctx)?.destroy()
+                                    }
+
+                                    const gradeChart = new Chart(ctx, {
+                                        type: 'bar',
+                                        data: {
+                                            labels: gradeLabels,  // X-axis labels (grade types)
+                                            datasets: [{
+                                                label: 'Grade Distribution',
+                                                data: gradeValues,  // Y-axis data (frequency of each grade)
+                                                backgroundColor: '#4CAF50',  // Color for the bars
+                                                borderColor: '#388E3C',
+                                                borderWidth: 1
+                                            }]
+                                        },
+                                        options: {
+                                            responsive: true,
+                                            scales: {
+                                                y: {
+                                                    beginAtZero: true,  // Ensure the Y-axis starts at zero
+                                                    title: {
+                                                        display: true,
+                                                        text: 'Frequency'
+                                                    }
+                                                },
+                                                x: {
+                                                    title: {
+                                                        display: true,
+                                                        text: 'Grade'
+                                                    }
                                                 }
                                             }
                                         }
-                                    }
-                                });
+                                    });
+                                }
+                                
                             })
                             .catch(error => {
                                 console.error('Error fetching grades:', error);
@@ -154,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
             tinderContainer.classList.add('loaded');
         }
 
-        initCards();    
+        initCards();   
 
         allCards.forEach(function (el) {
             var hammertime = new Hammer(el);
@@ -191,8 +204,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     event.target.style.transform = '';
                 } else {
                     if (event.deltaX > 0) {
-                        // Save right swipe
-                        likedCards.push(event.target.innerHTML);
+                        const selectedProf = event.target.getAttribute('data-selected-professor') || null;
+                        const courseID = event.target.querySelector('.course-name h3')?.textContent?.slice(0, 7);
+                        likedCards.push([courseID,selectedProf]);
                     }
                     var endX = Math.max(Math.abs(event.velocityX) * moveOutWidth, moveOutWidth);
                     var toX = event.deltaX > 0 ? endX : -endX;
@@ -204,6 +218,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     event.target.style.transform = 'translate(' + toX + 'px, ' + (toY + event.deltaY) + 'px) rotate(' + rotate + 'deg)';
                     initCards();
+                    checkIfFinished();
                 }
             });
         });
@@ -220,14 +235,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 card.classList.add('removed');
 
                 if (love) {
-                    likedCards.push(card.innerHTML)
+                    const selectedProf = card.getAttribute('data-selected-professor') || null;
+                    const courseID = card.querySelector('.course-name h3')?.textContent?.slice(0, 7);
+                    likedCards.push([courseID,selectedProf]);
+                
                     card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
                 } else {
                     card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
                 }
 
                 initCards();
-
+                checkIfFinished();
                 event.preventDefault();
             };
         }
@@ -239,3 +257,26 @@ document.addEventListener('DOMContentLoaded', function () {
         love.addEventListener('click', loveListener);
     });
 });
+
+function checkIfFinished() {
+    const remainingCards = document.querySelectorAll('.tinder--card:not(.removed)');
+    if (remainingCards.length === 0) {
+        // All cards have been swiped
+        console.log(likedCards)
+        fetch('/generate_schedule', {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({input :   likedCards})
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "ok") {
+                window.location.href = "/dynamic_schedule";
+            }
+        })
+        
+    }
+}
+

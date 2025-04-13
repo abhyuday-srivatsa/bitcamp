@@ -3,9 +3,8 @@ from itertools import product
 from datetime import datetime, timedelta
 from typing import List, Dict, Any
 import toolbelt
-
 courses = []
-
+sections = []
 def schedule(course_id, professor=None):
     listings = toolbelt.get_course_listings(course_id)
     sections = listings['sections']
@@ -26,12 +25,10 @@ def schedule(course_id, professor=None):
 
 
 
-potential_courses = [("CMSC320",None),
-                     ("CMSC433", None),("BMIN210",None),("CMSC414",None),("MATH141",None),("INST104",None),("DATA110",None)]
-sections = []
-for course in potential_courses:
-    course_id, professor = course
-    sections.append(schedule(course_id, professor))
+def startup(user_stuff):
+    for course in user_stuff:
+        course_id, professor = course
+        sections.append(schedule(course_id, professor))
 
 
 
@@ -128,7 +125,7 @@ def build_valid_schedules_with_metadata(section_data_by_course: List[Dict[str, A
 
 
 
-valid = build_valid_schedules_with_metadata(sections, credit_range=(1, 20))
+# valid = build_valid_schedules_with_metadata(sections, credit_range=(1, 20))
 
 
 def print_schedules(schedules: List[Dict[str, Any]]):
@@ -195,7 +192,7 @@ def get_current_week_dates():
 #                             "end": end_dt.isoformat(),
 #                         })
 #     return events
-
+#
 def format_events(schedule):
     events = []
     online_only_courses = []
