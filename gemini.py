@@ -1,8 +1,6 @@
 import google.generativeai as genai
-from google.generativeai import types
 import PyPDF2
 import string
-import toolbelt
 import os
 
 prompt = ""

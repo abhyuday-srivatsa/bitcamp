@@ -57,7 +57,6 @@ def is_online(section: Dict[str, Any]) -> bool:
 
 def build_valid_schedules_with_metadata(section_data_by_course: List[Dict[str, Any]],
                                         credit_range=(12, 18)) -> List[Dict[str, Any]]:
-    from itertools import product
 
     valid_schedules = []
 

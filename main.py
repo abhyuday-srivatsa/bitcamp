@@ -3,11 +3,8 @@ from flask import Flask, request, jsonify, render_template, flash, redirect, mak
 from werkzeug.utils import secure_filename
 
 from gemini import askAgent
-import requests
 import uuid
 import os
-import gemini
-import re
 from itertools import product
 from datetime import datetime, timedelta
 from typing import List, Dict, Any
