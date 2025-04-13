@@ -6,7 +6,7 @@
     --dark-one: #212121;
     --dark-two: #797979;
 
-    --highlight: #cf7456;
+    --highlight: #e21833;
 
     --primary: var(--light-one);
     --secondary: var(--dark-one);
@@ -26,8 +26,8 @@ body {
     font-family: "Roboto", sans-serif;
     max-width: 1500px;
     margin: auto;
-    color: var(--secondary);
-    background-color: var(--primary);
+    color:white;
+    background-color: black;
     font-size: 12pt;
 }
 
@@ -50,22 +50,23 @@ input[type="file"] {
 }
 
 #file-upload-label {
-    color: var(--quaternary);
+    color: #e21833;
     display: inline-block;
     padding: 0.8rem;
     outline: none;
     cursor: pointer;
     border-radius: 8px;
     font-size: 20pt;
-    border: 1px solid var(--quinary);
+    border: 1px #e21833 solid;
     margin-right: 10px;
     margin-bottom: 10px;
+    background-color: black;
 }
 
 #file-upload-label:hover,
 #file-upload-label:focus {
-    border-color: var(--secondary);
-    color: var(--secondary);
+    border-color: #e21833;
+    color: #e21833;
 }
 
 #submit-file {
@@ -80,6 +81,7 @@ input[type="file"] {
 
 #submit-file:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background-color:#ffd200;
 }
 
 .form {
@@ -109,6 +111,7 @@ input[type="file"] {
 
 .conversation button:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background-color:#e21833;
 }
 
 .container {

@@ -8,7 +8,7 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
-        background-color: #cf7456;
+        background-color: #e21833;
       }
       
       li {
@@ -24,8 +24,17 @@
       }
       
       li a:hover {
-        background-color: #963d1f;
+        background-color:#e21833;
       }
+
+      body{
+        background-image: url('https://umd-election.transforms.svdcdn.com/production/images/gcp/about-image-2_2024-07-30-130814_hshd.jpg?w=750&h=517&auto=compress%2Cformat&fit=crop&dm=1722344934&s=c7062dc487405797003c30b7b494ac52');
+        background-size:cover;
+        background-color: rgba(255,255,255,0.6);
+  background-blend-mode: lighten;
+
+      }
+     
   </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -40,15 +49,13 @@
   <body>
     <ul> 
       <li><a href="/">Home</a></li>
-      <li><a href="/chat">Chat</a></li>
-      <li><a href="/tinder">Tinder</a></li>
       <li><a href="/dynamic_schedule">Schedule</a></li>
   </ul>
   {% block body %}{% endblock %}
     <div class="container">
       <div class="content">
         <h1 id="title">Welcome to Cinder</h1>
-        <h2 id="description">Upload your UMD Degree Audit below or chat with our AI Assistant!</h2>
+        <h2 id="description">Upload your UMD Degree Audit below!</h2>
         <div class="form">
           <form action="/" enctype="multipart/form-data" method="POST">
             <label for="file-upload" id="file-upload-label">
@@ -57,10 +64,6 @@
             <input id="file-upload" type="file" name="file" onchange="confirmUpload()" />
             <input type="submit" id="submit-file" value="Go"/>
           </form>
-        </div>
-        <hr>
-        <div class="conversation">
-          <button onclick = "confirmUpload(); window.location.href='/chat'">Chat with our AI Assistant</button>
         </div>
       </div>
       </div>
